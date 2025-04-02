@@ -1,0 +1,7 @@
+.nav-link{
+    justify-content: space-between;
+    color: #D3B94A !important; 
+}
+.nav-link:hover {
+    color: #A1753E !important; 
+}
