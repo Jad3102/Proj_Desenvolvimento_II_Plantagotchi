@@ -9,10 +9,10 @@
   </head>
 
   <body>
-    <!-- chamando JavaScript para uso da estilização do bootstrap quando requisitar javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- cimportando cabelhado na página principal com php -->
-    <?php require "topo.php"; ?>
+    <!-- em index sempre referenciar caminhos com ./ -->
+     <!-- em arquivos dentro de arquivos, usamos ../ -->
+    <?php require "./components/cabecalho.php"; ?>
 
   </body>
 </html>

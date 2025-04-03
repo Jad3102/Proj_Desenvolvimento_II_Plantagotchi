@@ -8,8 +8,8 @@
             </a>
             <ul class="nav">
                 <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Produto</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Quem Somos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Produto</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
             </ul>
