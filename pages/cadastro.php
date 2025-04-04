@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Cadastro | PlantaGotchi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../assets/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
     <script src="../server/formatarCPF.js" defer></script>
     <script src="../server/buscaCEP.js" defer></script>
 </head>
-<body class="container mt-5">
-    <?php require "../components/cabecalho.php"; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<body>
+    <?php require "../components/cabecalho.php"; ?>
+    <div class="forms-container">
     <h2 class="text-center mb-4">Cadastro</h2>
-    <div class="login-container">
         <form>
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome Completo</label>
@@ -64,8 +63,15 @@
                 <label for="senha" class="form-label">Senha de Acesso</label>
                 <input type="password" class="form-control" id="senha" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Criar Cadastro</button>
+            <button type="submit" class="btn btn_bege w-100">Criar Cadastro</button>
         </form>
     </div>
+
+    <div class="imagem-inferior-fixa">
+        <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas no canto inferior direito">
+    </div>
+
+    <?php require "../components/rodape.php"; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
