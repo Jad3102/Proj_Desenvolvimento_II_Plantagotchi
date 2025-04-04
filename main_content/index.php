@@ -19,6 +19,15 @@
      <!-- em arquivos dentro de arquivos, usamos ../ -->
     <?php require "../components/cabecalho.php"; ?>
 
+
+
+    <!-- chamando arquivos teste (depois ajustamos para aquele modo mais fácil) -->
+     <!-- sessão inicio -->
+    <?php require "../pages/inicio.php"; ?>
+    <!-- sessão quem somos -->
+    <?php require "../pages/quem_somos.php"; ?>
+
+
     <div class="test">
       <p>teste pro footer
         <br>

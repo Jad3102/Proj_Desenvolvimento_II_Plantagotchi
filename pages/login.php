@@ -17,7 +17,6 @@
                 <div class="mb-3">
                     <label for="campo_email" class="form-label">E-mail</label>
                     <input type="email" class="form-control" id="campo_email" aria-describedby="emailHelp">
-                    <!-- <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com ninguém.</div> -->
                 </div>
                 <div class="mb-3">
                     <label for="campo_senha" class="form-label">Senha</label>
