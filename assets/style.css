@@ -1,0 +1,11 @@
+/* fiz esse esquema de imports pra não ter problemas com muitos arquivos importando muitas coisas */
+@import url(cadastro.css);
+@import url(cabecalho.css);
+@import url(footer.css);
+@import url(login.css);
+
+body{
+    background-color: #F6EEC6;
+    margin: 0 0 0 0;
+    font-family: "Inter", sans-serif;
+}
