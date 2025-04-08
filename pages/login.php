@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php require "../components/cabecalho.php"; ?>
+    <?php require "../components/header.php"; ?>
     <div class="container">
         <div class="forms-container">
             <h2 class="text-center">Login</h2>
@@ -26,7 +26,7 @@
             </form>
             <div class="text-center mt-4">
                 <p>Não possui conta? Cadastre-se abaixo</p>
-                <a href="cadastro.php" class="btn_cadastro btn w-50">Cadastrar</a>
+                <a href="register.php" class="btn_cadastro btn w-50">Cadastrar</a>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
         <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas no canto inferior direito">
     </div>
     
-    <?php require "../components/rodape.php"; ?>
+    <?php require "../components/footer.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

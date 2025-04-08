@@ -6,12 +6,12 @@
     <title>Criar Cadastro | PlantaGotchi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
-    <script src="../server/formatarCPF.js" defer></script>
-    <script src="../server/buscaCEP.js" defer></script>
+    <script src="../server/format_cpf.js" defer></script>
+    <script src="../server/postal_code_search.js" defer></script>
 </head>
 
 <body>
-    <?php require "../components/cabecalho.php"; ?>
+    <?php require "../components/header.php"; ?>
     <div class="forms-container">
     <h2 class="text-center mb-4">Cadastro</h2>
         <form>
@@ -71,7 +71,7 @@
         <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas no canto inferior direito">
     </div>
 
-    <?php require "../components/rodape.php"; ?>
+    <?php require "../components/footer.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

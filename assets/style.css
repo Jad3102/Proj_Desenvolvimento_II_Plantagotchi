@@ -1,8 +1,12 @@
 /* fiz esse esquema de imports pra não ter problemas com muitos arquivos importando muitas coisas */
-@import url(cadastro.css);
-@import url(cabecalho.css);
+@import url(register.css);
+@import url(header.css);
 @import url(footer.css);
 @import url(login.css);
+
+html {
+    scroll-behavior: smooth; /*isso serve para que o site desça de forma mais fluida nas sessões*/
+}
 
 body{
     background-color: #F6EEC6;

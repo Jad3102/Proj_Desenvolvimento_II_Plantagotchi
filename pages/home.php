@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Início | PlantaGotchi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../assets/inicio.css">
+    <link rel="stylesheet" type="text/css" href="../assets/home.css">
 </head>
 <body>
-    <div class="container-fluid my-5 px-0">
+    <div id="home" class="container-fluid my-5 px-0">
         <div class="inicio-container position-relative p-5">
             <div class="row align-items-center">
                 <div class="col-md-6 text-md-start text-center">
