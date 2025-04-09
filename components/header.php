@@ -7,7 +7,7 @@
                 <img src="../assets/images/planta_logo.png" alt="Logo do Site" width="30">
             </a>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="../main_content/index.php">Início</a></li>
                 <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem Somos</a></li> <!-- em href vamos atribuir o id -->
                 <li class="nav-item"><a class="nav-link" href="#">Produto</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
