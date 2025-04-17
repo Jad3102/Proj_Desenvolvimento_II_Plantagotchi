@@ -3,6 +3,7 @@
 @import url(header.css);
 @import url(footer.css);
 @import url(login.css);
+@import url(thePlanta.css);
 
 html {
     scroll-behavior: smooth; /*isso serve para que o site desça de forma mais fluida nas sessões*/

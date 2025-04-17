@@ -21,36 +21,10 @@
     <?php require "../components/header.php"; ?>
      <!-- sessão inicio -->
     <?php require "../pages/home.php"; ?>
+    <!-- sessão O planta -->
+    <?php require "../pages/thePlanta.php"; ?>
     <!-- sessão quem somos -->
     <?php require "../pages/about_us.php"; ?>
-
-
-    <div class="test">
-      <p>teste pro footer
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <p>
-    </div>
 
     <?php require "../components/footer.php"; ?>
   </body>

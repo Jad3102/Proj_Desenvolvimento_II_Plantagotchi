@@ -1,7 +1,7 @@
 <header id="cabecalho">
     <link rel="stylesheet" type="text/css" href="../assets/header.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <div class="cabecalho">
+    <div class="cabecalho shadow-sm">
         <nav class="navbar navbar-light .bg-white px-5">
             <a class="navbar-brand" href="../main_content/index.php">
                 <img src="../assets/images/planta_logo.png" alt="Logo do Site" width="30">
