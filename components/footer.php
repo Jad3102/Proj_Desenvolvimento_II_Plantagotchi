@@ -1,5 +1,5 @@
-<footer class="container-fluid py-2 text-center">
-    <div class="row align-items-center w-100"> 
+<footer class="container-fluid py-2 text-center ">
+    <div class="row align-items-center w-100 shadow"> 
         <div class="footer_details text-center">
             <a href="../main_content/index.php"> <!-- acho que aqui não tá funcionando pelo position do css !-->
                 <img src="../assets/images/planta_logo.png" alt="Logo do Site" width="30">

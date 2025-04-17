@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../assets/about_us.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
 
  <section id="quem-somos" class="quem-somos py-5"> <!-- inseri esse id para usar nos links do header (faz isso para demais sessões do site) -->

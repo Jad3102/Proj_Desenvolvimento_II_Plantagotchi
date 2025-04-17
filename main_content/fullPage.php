@@ -21,10 +21,15 @@
     <?php require "../components/header.php"; ?>
      <!-- sessão inicio -->
     <?php require "../pages/home.php"; ?>
-    <!-- sessão O planta -->
-    <?php require "../pages/thePlanta.php"; ?>
+
     <!-- sessão quem somos -->
     <?php require "../pages/about_us.php"; ?>
+
+    <!-- sessão O planta -->
+    <?php require "../pages/the_planta.php"; ?>
+
+     <!-- sessão Entre em Contato -->
+     <?php require "../pages/contact_us.php"; ?>
 
     <?php require "../components/footer.php"; ?>
   </body>

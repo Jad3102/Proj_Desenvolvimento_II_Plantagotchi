@@ -1,8 +1,8 @@
-.thePlanta {
+.the_planta {
     background-color: #F6EEC6; 
-    display: flex;
-    align-items: center; /* Centraliza os itens verticalmente */
-    justify-content: center; /* Opcional, alinha no centro */
+    background-image: url('../assets/images/itens.png');
+    background-position: center;   
+    background-repeat: no-repeat;
     margin-bottom: 8%;
     min-height: 500px;
 }

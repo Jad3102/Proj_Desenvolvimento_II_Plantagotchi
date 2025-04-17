@@ -1,0 +1,69 @@
+.contact_us{
+    background: linear-gradient(45deg, #D79B8F, #EEAA3C);
+    color: #F6EEC6;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Opcional, alinha no centro */
+    
+}
+
+.content_contact_us{
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Opcional, alinha no centro */
+    flex-direction: column;
+    min-height: 500px;
+    margin: 5%;
+    
+    
+}
+
+.titulo_contato{
+    font-size: 55px; 
+    font-weight: bold;
+    border-bottom: 5px solid #F6EEC6; 
+    padding-bottom: 5px; 
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.flores_contato{
+    position: absolute;
+    height: auto;
+    z-index: 0;
+    margin: 3%;
+}
+
+#flor_laranja{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#flor_rosa{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.botoes_contato{
+    display: flex;
+    justify-content: center; /* ou start, se quiser mais à esquerda */
+    gap: 40px; /* você ajusta o valor conforme o design */
+    width: 100%
+}
+
+.botoes_contato .email{
+    background-color: #F6EEC6;
+    border-radius: 20px;
+    padding: 5px 80px;
+    color: black;
+
+}
+.botoes_contato .outro{
+    background-color: #F6EEC6;
+    padding: 5px 80px;
+    border-radius: 20px;
+    color: black;
+}
