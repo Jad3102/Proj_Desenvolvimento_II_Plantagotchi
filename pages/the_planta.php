@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
 <body>
-    <section>
+    <section id="produto">
         <div class="container-fluid the_planta">
             <div class="">
                 <div class="titulo_planta">

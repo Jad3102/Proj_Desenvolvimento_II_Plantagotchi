@@ -33,19 +33,19 @@
             </div>
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="estado" disabled>
+                <input type="text" class="form-control" id="estado" >
             </div>
             <div class="mb-3">
                 <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidade" disabled>
+                <input type="text" class="form-control" id="cidade">
             </div>
             <div class="mb-3">
                 <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairro" disabled>
+                <input type="text" class="form-control" id="bairro">
             </div>
             <div class="mb-3">
                 <label for="rua" class="form-label">Rua</label>
-                <input type="text" class="form-control" id="rua" disabled>
+                <input type="text" class="form-control" id="rua">
             </div>
             <div class="mb-3">
                 <label for="numero" class="form-label">Número</label>

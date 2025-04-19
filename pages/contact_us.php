@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
 <body>
-    <section class="container_fluid contact_us">
+    <section id="contato" class="container_fluid contact_us">
             <div class="container d-flex content_contact_us">
                 <img class="flores_contato" id="flor_laranja" src="../assets/images/florzinhas_laranja.png" alt="Flores laranja">
             
