@@ -22,11 +22,14 @@
      <!-- sessão inicio -->
     <?php require "../pages/home.php"; ?>
 
-    <!-- sessão quem somos -->
-    <?php require "../pages/about_us.php"; ?>
-
     <!-- sessão O planta -->
     <?php require "../pages/the_planta.php"; ?>
+
+     <!-- sessão quem somos -->
+     <?php require "../pages/about_us.php"; ?>
+
+      <!-- sessão Galeria -->
+      <?php require "../pages/galery.php"; ?>
 
      <!-- sessão Entre em Contato -->
      <?php require "../pages/contact_us.php"; ?>
