@@ -1,0 +1,23 @@
+services:
+  php-apache:
+    image: php:8.2-apache
+    container_name: meu_php
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: meu_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: projeto
+      MYSQL_USER: user
+      MYSQL_PASSWORD: senha
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - "3306:3306"

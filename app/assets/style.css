@@ -4,15 +4,24 @@
 @import url(header.css);
 @import url(footer.css);
 @import url(login.css);
-@import url(thePlanta.css);
+@import url(the_planta.css);
 @import url(contact_us.css);
+@import url(galery.css);
 
 html {
     scroll-behavior: smooth; /*isso serve para que o site desça de forma mais fluida nas sessões*/
 }
 
+section{
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Opcional, alinha no centro */
+}
+
 body{
-    background-color: #F6EEC6;
+    background-color: #ffffff;
     margin: 0 0 0 0;
     font-family: "Inter", sans-serif;
 }

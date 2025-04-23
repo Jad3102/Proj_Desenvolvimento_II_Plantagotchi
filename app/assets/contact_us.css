@@ -14,7 +14,6 @@
     align-items: center; /* Centraliza os itens verticalmente */
     justify-content: center; /* Opcional, alinha no centro */
     flex-direction: column;
-    min-height: 500px;
     margin: 5%;
     
     

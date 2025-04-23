@@ -1,0 +1,65 @@
+.galery{
+    background-color: #F6EEC6;
+    min-width: 500px;
+    text-align: center;
+}
+
+.fotos{
+    text-align: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.title {
+   
+    font-size: clamp(1.5rem, 5vw, 3rem); /* responsivo */
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    background: linear-gradient(90deg, #D79C7F, #E29C30);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+      
+      
+
+}
+.foto_individual {
+    padding: 140px 60px;
+    border-radius: 25px;
+   
+}
+
+#imagem_1{
+    background-color: #A59E37;
+}
+#imagem_2, #imagem_5 {
+    background-color: #E49E28;
+}
+#imagem_3{
+    background-color: #ffffff;
+}
+#imagem_4{
+    background-color: #D79B8F;
+}
+
+
+.tulipas {
+    position: absolute;
+    height: auto;
+    z-index: 0;
+}
+
+#tuli1{
+    position: absolute;
+    bottom: 0;
+    left: 0
+}
+
+#tuli2{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
