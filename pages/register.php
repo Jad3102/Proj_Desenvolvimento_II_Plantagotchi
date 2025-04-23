@@ -14,54 +14,54 @@
     <?php require "../components/header.php"; ?>
     <div class="forms-container">
     <h2 class="text-center mb-4">Cadastro</h2>
-        <form>
+        <form action="../server/register_user.php" method="post">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nome" required>
+                <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" oninput="this.value = formatarCPF(this.value);" required>
+                <input type="text" class="form-control" id="cpf" name="cpf" oninput="this.value = formatarCPF(this.value);" required>
             </div>
             <div class="mb-3">
                 <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="data_nascimento" required>
+                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required>
             </div>
             <div class="mb-3">
                 <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onblur="buscarCEP()" required>
+                <input type="text" class="form-control" id="cep" name="cep" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onblur="buscarCEP()" required>
             </div>
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="estado" >
+                <input type="text" class="form-control" id="estado" name="estado">
             </div>
             <div class="mb-3">
                 <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidade">
+                <input type="text" class="form-control" id="cidade" name="cidade">
             </div>
             <div class="mb-3">
                 <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairro">
+                <input type="text" class="form-control" id="bairro" name="bairro">
             </div>
             <div class="mb-3">
                 <label for="rua" class="form-label">Rua</label>
-                <input type="text" class="form-control" id="rua">
+                <input type="text" class="form-control" id="rua" name="rua">
             </div>
             <div class="mb-3">
                 <label for="numero" class="form-label">Número</label>
-                <input type="text" class="form-control" id="numero" required>
+                <input type="text" class="form-control" id="numero" name="numero" required>
             </div>
             <div class="mb-3">
                 <label for="complemento" class="form-label">Complemento</label>
-                <input type="text" class="form-control" id="complemento">
+                <input type="text" class="form-control" id="complemento" name="complemento">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" required>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha de Acesso</label>
-                <input type="password" class="form-control" id="senha" required>
+                <input type="password" class="form-control" id="senha" name="senha" required>
             </div>
             <button type="submit" class="btn btn_bege w-100">Criar Cadastro</button>
         </form>
