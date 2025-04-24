@@ -3,7 +3,8 @@ services:
     image: php:8.2-apache
     container_name: meu_php
     volumes:
-      - ./app:/var/www/html
+      - /run/desktop/mnt/host/c/xampp/htdocs/Proj_Desenvolvimento_II_Plantagotchi/app:/var/www/html
+
     ports:
       - "8080:80"
     depends_on:
@@ -13,11 +14,11 @@ services:
     image: mysql:8.0
     container_name: meu_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: projeto
-      MYSQL_USER: user
-      MYSQL_PASSWORD: senha
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db_temp:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3307:3306"

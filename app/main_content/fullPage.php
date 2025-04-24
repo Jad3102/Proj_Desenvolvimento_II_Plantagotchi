@@ -18,7 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- em index sempre referenciar caminhos com ./ -->
      <!-- em arquivos dentro de arquivos, usamos ../ -->
-    <?php require "../components/header.php"; ?>
+
+     <?php require "../components/header.php"; ?>
      <!-- sessão inicio -->
     <?php require "../pages/home.php"; ?>
 
@@ -37,5 +38,3 @@
     <?php require "../components/footer.php"; ?>
   </body>
 </html>
-
-<!-- http://localhost/Proj_Desenvolvimento_II_Plantagotchi/main_content/index.php -->

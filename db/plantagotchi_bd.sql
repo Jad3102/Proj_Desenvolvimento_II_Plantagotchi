@@ -1,7 +1,3 @@
-CREATE DATABASE plantagotchi_db;
-
-USE plantagotchi_db;
-
 CREATE TABLE usuarios (
     usuario_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,

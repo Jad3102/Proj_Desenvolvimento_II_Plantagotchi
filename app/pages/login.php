@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['erro_login'])) {
+    echo "<div class='alert alert-danger text-center'>" . $_SESSION['erro_login'] . "</div>";
+    unset($_SESSION['erro_login']);
+}
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -16,11 +24,11 @@
             <form>
                 <div class="mb-3">
                     <label for="campo_email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="campo_email" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="campo_email" aria-describedby="emailHelp" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="campo_senha" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="campo_senha">
+                    <input type="password" class="form-control" id="campo_senha" name="senha">
                 </div>
                 <button type="submit" class="btn_entrar btn  w-100">Entrar</button>
             </form>

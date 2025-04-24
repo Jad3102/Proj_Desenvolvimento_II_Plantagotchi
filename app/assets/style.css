@@ -9,7 +9,7 @@
 @import url(galery.css);
 
 html {
-    scroll-behavior: smooth; /*isso serve para que o site desça de forma mais fluida nas sessões*/
+    scroll-behavior: smooth;/*isso serve para que o site desça de forma mais fluida nas sessões*/
 }
 
 section{
