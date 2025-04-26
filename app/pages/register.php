@@ -6,15 +6,15 @@
     <title>Criar Cadastro | PlantaGotchi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
-    <script src="../server/format_cpf.js" defer></script>
-    <script src="../server/postal_code_search.js" defer></script>
+    <script src="../js/format_cpf.js" defer></script>
+    <script src="../js/postal_code_search.js" defer></script>
 </head>
 
 <body>
     <?php require "../components/header.php"; ?>
     <div class="forms-container">
     <h2 class="text-center mb-4">Cadastro</h2>
-        <form action="../server/register_user.php" method="post">
+        <form action="../db/register_user.php" method="post">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
@@ -29,7 +29,7 @@
             </div>
             <div class="mb-3">
                 <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep" name="cep" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onblur="buscarCEP()" required>
+                <input type="text" class="form-control" id="cep" name="cep" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')"onblur="buscarCEP()" required>
             </div>
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>

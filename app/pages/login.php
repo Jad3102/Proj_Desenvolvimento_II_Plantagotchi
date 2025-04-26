@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION['erro_login'])) {
-    echo "<div class='alert alert-danger text-center'>" . $_SESSION['erro_login'] . "</div>";
-    unset($_SESSION['erro_login']);
-}
-?>
-
 <!doctype html>
 <html lang="pt-br">
 <head>

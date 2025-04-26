@@ -1,7 +1,7 @@
 <!-- Vamos usar password_hash para criptrografar as senhas, o exemplo que tenho que é com sha1 serve apenas para codificar e é fácil de reverter -->
 
 <?php
-require_once "../server/connection_db.php"; // Arquivo com sua conexão ao banco de dados
+require_once "../db/connection_db.php"; // Arquivo com sua conexão ao banco de dados
 require "../pages/register.php"; 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
