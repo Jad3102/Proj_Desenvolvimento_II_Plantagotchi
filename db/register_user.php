@@ -1,5 +1,3 @@
-<!-- Vamos usar password_hash para criptrografar as senhas, o exemplo que tenho que é com sha1 serve apenas para codificar e é fácil de reverter -->
-
 <?php
 require_once __DIR__ . '/../db/connection_db.php';
 require_once __DIR__ . '/../pages/register.php';

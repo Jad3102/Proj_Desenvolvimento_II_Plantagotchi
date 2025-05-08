@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['erro_login'])) {
+    echo "<script>alert('{$_SESSION['erro_login']}');</script>";
+    unset($_SESSION['erro_login']);
+}
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -12,7 +20,7 @@
     <div class="container">
         <div class="forms-container">
             <h2 class="text-center">Login</h2>
-            <form>
+            <form action="../db/login_user.php" method="post">
                 <div class="mb-3">
                     <label for="campo_email" class="form-label">E-mail</label>
                     <input type="email" class="form-control" id="campo_email" aria-describedby="emailHelp" name="email">
