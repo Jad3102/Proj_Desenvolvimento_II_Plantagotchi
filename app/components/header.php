@@ -1,7 +1,7 @@
 <header id="cabecalho">
     <div class="cabecalho shadow-sm">
-        <nav class="navbar px-3 px-md-5">
-            <a class="navbar-brand" href="../main_content/fullPage.php">
+        <nav class="navbar px-5 px-md-5">
+            <a class="navbar-brand"  href="../main_content/fullPage.php">
                 <img src="../assets/images/planta_logo.png" alt="Logo do Site" width="30">
             </a>
             <ul class="nav">
@@ -14,3 +14,4 @@
         </nav>
     </div>
 </header>
+    

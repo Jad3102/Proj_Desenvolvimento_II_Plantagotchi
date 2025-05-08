@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
-
 <body>
     <?php require "../components/header.php"; ?>
     <div class="container">
@@ -30,11 +29,10 @@
             </div>
         </div>
     </div>
-
     <div class="imagem-inferior-fixa">
         <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas no canto inferior direito">
     </div>
-    
+
     <?php require "../components/footer.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

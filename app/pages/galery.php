@@ -10,7 +10,6 @@
             <img class="foto_individual" id="imagem_5" src="imagem4.jpg" alt="Descrição 5">
         </div>
     </div>
-
     <!-- Exemplo de imagem decorativa, comente ou ajuste conforme necessidade -->
     <!--
     <div class="tulipas">
