@@ -1,5 +1,5 @@
 .quem-somos {
     background-color: #9C963D; 
     color: white;
-    margin-top: -50px; /*essa margem negativa aproxima as sessões Inicio e Quem somos*/
+    margin-top: -50px; /*isso pode estar ajudando np scroll inferior */
 }

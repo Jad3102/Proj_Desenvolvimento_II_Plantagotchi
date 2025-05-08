@@ -1,15 +1,6 @@
 footer {
-    background-color: #ffff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
     font-size: 14px;
     color: rgb(156, 156, 156);
-    z-index: -2;
+    background-color: #fff;
+    width: 100%;
 }
-
-
-/* .icons-redes{
-    color: rgb(0, 0, 0);
-
-} */

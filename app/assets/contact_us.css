@@ -1,68 +1,63 @@
-.contact_us{
+.contact_us {
     background: linear-gradient(45deg, #D79B8F, #EEAA3C);
     color: #F6EEC6;
     min-height: 500px;
-    position: relative;
     display: flex;
-    align-items: center; /* Centraliza os itens verticalmente */
-    justify-content: center; /* Opcional, alinha no centro */
-    
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden; /* evita scroll horizontal */
+    padding: 2rem 1rem;
 }
 
-.content_contact_us{
+.content_contact_us {
     display: flex;
-    align-items: center; /* Centraliza os itens verticalmente */
-    justify-content: center; /* Opcional, alinha no centro */
     flex-direction: column;
-    margin: 5%;
-    
-    
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
 }
 
-.titulo_contato{
-    font-size: 55px; 
+.titulo_contato {
+    font-size: 2.5rem;
     font-weight: bold;
-    border-bottom: 5px solid #F6EEC6; 
-    padding-bottom: 5px; 
-    margin-bottom: 30px;
-    position: relative;
+    border-bottom: 5px solid #F6EEC6;
+    padding-bottom: 5px;
+    margin-bottom: 1rem;
     z-index: 1;
 }
 
-.flores_contato{
+.flores_contato {
     position: absolute;
     height: auto;
     z-index: 0;
-    margin: 3%;
+    max-width: 150px;
 }
 
-#flor_laranja{
-    position: absolute;
+#flor_laranja {
     top: 0;
     left: 0;
 }
-#flor_rosa{
-    position: absolute;
+#flor_rosa {
     bottom: 0;
     right: 0;
 }
-.botoes_contato{
+
+.botoes_contato {
     display: flex;
-    justify-content: center; /* ou start, se quiser mais à esquerda */
-    gap: 40px; /* você ajusta o valor conforme o design */
-    width: 100%
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
-.botoes_contato .email{
+.botoes_contato .email,
+.botoes_contato .outro {
     background-color: #F6EEC6;
     border-radius: 20px;
-    padding: 5px 80px;
+    padding: 10px 40px;
     color: black;
-
-}
-.botoes_contato .outro{
-    background-color: #F6EEC6;
-    padding: 5px 80px;
-    border-radius: 20px;
-    color: black;
+    font-weight: bold;
 }

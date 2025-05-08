@@ -1,8 +1,8 @@
 <!-- Vamos usar password_hash para criptrografar as senhas, o exemplo que tenho que é com sha1 serve apenas para codificar e é fácil de reverter -->
 
 <?php
-require_once "../db/connection_db.php"; // Arquivo com sua conexão ao banco de dados
-require "../pages/register.php"; 
+require_once __DIR__ . '/../db/connection_db.php';
+require_once __DIR__ . '/../pages/register.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Recebe os dados do formulário do usuário
@@ -35,18 +35,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $usuario_id = $conn->lastInsertId();
 
         // Insere na tabela enderecos
-        $stmt_endereco = $conn->prepare("INSERT INTO enderecos (usuario_id, cep, estado, cidade, bairro, rua, numero, complemento)
-                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt_endereco = $conn->prepare("INSERT INTO enderecos (usuario_id, cep, estado, cidade, bairro, rua, numero, complemento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt_endereco->execute([$usuario_id, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento]);
 
         $conn->commit();
-        exit;
-        // DEVE EXIBIR AQUI UMA MENSAGEM DE SUCESSO OU DIRECIONAR O USUÁRIO AO LOGIN
-
+// Exibe mensagem de sucesso
+        echo "<div style='padding: 10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px;'>
+                Cadastro realizado com sucesso!
+              </div>";
     } catch (PDOException $e) {
+        // Desfaz a transação em caso de erro
         $conn->rollBack();
-        echo "Erro ao cadastrar: " . $e->getMessage();
+
+        // Exibe mensagem de erro
+        echo "<div style='padding: 10px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px;'>
+                Erro ao cadastrar: " . htmlspecialchars($e->getMessage()) . "
+              </div>";
     }
 } else {
-    echo "Método não permitido.";
+    echo "<div style='padding: 10px; background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 5px;'>
+            Método não permitido.
+          </div>";
 }
+?>

@@ -12,18 +12,19 @@ html {
     scroll-behavior: smooth;/*isso serve para que o site desça de forma mais fluida nas sessões*/
 }
 
+body{
+    background-color: #ffffff;
+    margin: 0 0 0 0;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
 section{
     min-height: 500px;
     position: relative;
     display: flex;
     align-items: center; /* Centraliza os itens verticalmente */
     justify-content: center; /* Opcional, alinha no centro */
-}
-
-body{
-    background-color: #ffffff;
-    margin: 0 0 0 0;
-    font-family: "Inter", sans-serif;
 }
 
 .forms_container{
