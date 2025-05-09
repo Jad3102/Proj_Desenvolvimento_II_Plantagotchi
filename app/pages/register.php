@@ -1,3 +1,10 @@
+<?php
+session_start();
+$erro_cadastro = $_SESSION['erro_cadastro'] ?? null;
+$sucesso_cadastro = $_SESSION['sucesso_cadastro'] ?? null;
+unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +19,24 @@
 
 <body>
     <?php require "../components/header.php"; ?>
+
+    <!-- estilização dos alertas -->
+    <?php if ($erro_cadastro): ?>
+        <div class="container mt-3">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?= htmlspecialchars($erro_cadastro) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+        </div>
+    <?php elseif ($sucesso_cadastro): ?>
+        <div class="container mt-3">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= htmlspecialchars($sucesso_cadastro) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <div class="forms-container">
     <h2 class="text-center mb-4">Cadastro</h2>
         <form action="../db/register_user.php" method="post">
@@ -21,11 +46,11 @@
             </div>
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" oninput="this.value = formatarCPF(this.value);" required>
+                <input type="text" class="form-control" id="campo_cpf" name="cpf" maxlength="14" pattern="\d{11}" title="Digite exatamente 11 números" required>
             </div>
             <div class="mb-3">
                 <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required>
+                <input type="date" class="form-control" id="campo_data_nascimento" name="data_nascimento" max="<?= date('Y-m-d') ?>" required>
             </div>
             <div class="mb-3">
                 <label for="cep" class="form-label">CEP</label>

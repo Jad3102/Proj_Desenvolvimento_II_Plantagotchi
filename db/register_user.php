@@ -1,58 +1,80 @@
 <?php
+session_start();
 require_once __DIR__ . '/../db/connection_db.php';
-require_once __DIR__ . '/../pages/register.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Recebe os dados do formulário do usuário
-    $nome = $_POST['nome'];
-    $cpf = $_POST['cpf'];
-    $data_nascimento = $_POST['data_nascimento'];
-    $email = $_POST['email'];
-    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografa a senha
+    $nome = $_POST['nome'] ?? '';
+    $cpf = $_POST['cpf'] ?? '';
+    $data_nascimento = $_POST['data_nascimento'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
 
-    // Endereço do usuário
-    $cep = $_POST['cep'];
-    $estado = $_POST['estado'];
-    $cidade = $_POST['cidade'];
-    $bairro = $_POST['bairro'];
-    $rua = $_POST['rua'];
-    $numero = $_POST['numero'];
-    $complemento = $_POST['complemento'];
+    $cep = $_POST['cep'] ?? '';
+    $estado = $_POST['estado'] ?? '';
+    $cidade = $_POST['cidade'] ?? '';
+    $bairro = $_POST['bairro'] ?? '';
+    $rua = $_POST['rua'] ?? '';
+    $numero = $_POST['numero'] ?? '';
+    $complemento = $_POST['complemento'] ?? '';
 
-// Usar o PDO possibilita usar os métodos prepare e execute para interagir com o banco de modo mais fácil e moderno
+    // Remove caracteres não numéricos do CPF
+$cpf_limpo = preg_replace('/\D/', '', $cpf);
+
+// Verifica se CPF tem exatamente 11 dígitos
+if (strlen($cpf_limpo) !== 11) {
+    $_SESSION['erro_cadastro'] = "O CPF deve conter exatamente 11 dígitos numéricos.";
+    header("Location: ../pages/register.php");
+    exit;
+}
+
+// Verifica se a data de nascimento é válida e não é futura
+$data_nascimento_formatada = DateTime::createFromFormat('Y-m-d', $data_nascimento);
+$data_hoje = new DateTime();
+
+if (!$data_nascimento_formatada || $data_nascimento_formatada > $data_hoje) {
+    $_SESSION['erro_cadastro'] = "A data de nascimento não pode ser futura.";
+    header("Location: ../pages/register.php");
+    exit;
+}
+
+// Verifica se campos obrigatórios estão vazios
+if (empty($nome) || empty($cpf) || empty($data_nascimento) || empty($email) || empty($senha) || empty($cep) || empty($numero)) {
+        $_SESSION['erro_cadastro'] = "Por favor, preencha todos os campos obrigatórios.";
+        header("Location: ../pages/register.php");
+        exit;
+}
 
     try {
-        // Conexão ao banco
         $conn->beginTransaction();
 
-        // Insere na tabela usuarios
-        $stmt_usuario = $conn->prepare("INSERT INTO usuarios (nome, cpf, data_nascimento, email, senha) VALUES (?, ?, ?, ?, ?)");
-        $stmt_usuario ->execute([$nome, $cpf, $data_nascimento, $email, $senha]);
+        // Criptografa a senha
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-        // Pega o ID do usuário recém-criado
+        // Insere usuário
+        $stmt_usuario = $conn->prepare("INSERT INTO usuarios (nome, cpf, data_nascimento, email, senha) VALUES (?, ?, ?, ?, ?)");
+        $stmt_usuario->execute([$nome, $cpf, $data_nascimento, $email, $senha_hash]);
+
         $usuario_id = $conn->lastInsertId();
 
-        // Insere na tabela enderecos
+        // Insere endereço
         $stmt_endereco = $conn->prepare("INSERT INTO enderecos (usuario_id, cep, estado, cidade, bairro, rua, numero, complemento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt_endereco->execute([$usuario_id, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento]);
 
         $conn->commit();
-// Exibe mensagem de sucesso
-        echo "<div style='padding: 10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px;'>
-                Cadastro realizado com sucesso!
-              </div>";
-    } catch (PDOException $e) {
-        // Desfaz a transação em caso de erro
-        $conn->rollBack();
 
-        // Exibe mensagem de erro
-        echo "<div style='padding: 10px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px;'>
-                Erro ao cadastrar: " . htmlspecialchars($e->getMessage()) . "
-              </div>";
+        $_SESSION['sucesso_cadastro'] = "Cadastro realizado com sucesso!";
+        header("Location: ../pages/register.php");
+        exit;
+
+    } catch (PDOException $e) {
+        $conn->rollBack();
+        $_SESSION['erro_cadastro'] = "Erro ao cadastrar. Tente novamente.";
+        header("Location: ../pages/register.php");
+        exit;
     }
 } else {
-    echo "<div style='padding: 10px; background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; border-radius: 5px;'>
-            Método não permitido.
-          </div>";
+    $_SESSION['erro_cadastro'] = "Método não permitido.";
+    header("Location: ../pages/register.php");
+    exit;
 }
-?>

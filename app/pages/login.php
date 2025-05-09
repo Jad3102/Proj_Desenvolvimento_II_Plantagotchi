@@ -1,9 +1,7 @@
 <?php
 session_start();
-if (isset($_SESSION['erro_login'])) {
-    echo "<script>alert('{$_SESSION['erro_login']}');</script>";
-    unset($_SESSION['erro_login']);
-}
+$erro_login = $_SESSION['erro_login'] ?? null;
+unset($_SESSION['erro_login']);
 ?>
 
 <!doctype html>
@@ -18,6 +16,17 @@ if (isset($_SESSION['erro_login'])) {
 <body>
     <?php require "../components/header.php"; ?>
     <div class="container">
+
+    <!-- estilização de pop-up de alerta/erro que vem das condições em login_user.php -->
+<?php if ($erro_login): ?>
+    <div class="mt-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= htmlspecialchars($erro_login) ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
         <div class="forms-container">
             <h2 class="text-center">Login</h2>
             <form action="../db/login_user.php" method="post">

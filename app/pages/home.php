@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <img src="../assets/images/florzinha.png" alt="Foto PlantaGotchi" class="planta-canto">
+            <!-- <img src="../assets/images/florzinha.png" alt="Foto PlantaGotchi" class="planta-canto"> -->
         </div>
     </div>
 </section>
