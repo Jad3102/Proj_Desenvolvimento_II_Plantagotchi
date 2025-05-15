@@ -20,6 +20,9 @@ unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
 <body>
     <?php require "../components/header.php"; ?>
 
+    <!-- Alerta de erro se não achar o CEP digitado estilizado com bootstrap-->
+    <div id="cepAlertContainer" class="container mt-3"></div>
+
     <!-- estilização dos alertas dos campos do forms -->
     <?php if ($erro_cadastro): ?>
         <div class="container mt-3">
@@ -36,9 +39,6 @@ unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
             </div>
         </div>
     <?php endif; ?>
-
-    <!-- Alerta de erro se não achar o CEP digitado -->
-    <div id="cepAlertContainer" class="container mt-3"></div>
 
     <div class="forms-container">
     <h2 class="text-center mb-4">Cadastro</h2>
@@ -99,20 +99,7 @@ unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
     <div class="imagem-inferior-fixa">
         <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas no canto inferior direito">
     </div>
-    
-<!-- Aqui é um scripts para exibir de modo estilizado quando houve um erro em buscar o CEP mas está retornando o padrão do localhost -->
     <?php require "../components/footer.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function exibirAlertaCEP(mensagem) {
-            const container = document.getElementById("cepAlertContainer");
-            container.innerHTML = `
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    ${mensagem}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-                </div>
-            `;
-        }
-</script>
 </body>
 </html>

@@ -1,3 +1,18 @@
+function exibirAlertaCEP(mensagem) {
+    const container = document.getElementById("cepAlertContainer");
+    if (!container) {
+        alert("Erro: container não encontrado.");
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            ${mensagem}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    `;
+}
+
 function buscarCEP() {
     const cepInput = document.getElementById("cep");
     let cep = cepInput.value.replace(/\D/g, "");

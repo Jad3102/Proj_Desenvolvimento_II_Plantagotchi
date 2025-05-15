@@ -1,4 +1,3 @@
-<!-- isso é uma questão de proteção, garante pra gente que quem está acessando essa página realmente possui acesso -->
 <?php
 session_start();
 if (!isset($_SESSION["admin_id"])) {
