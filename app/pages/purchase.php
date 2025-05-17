@@ -7,7 +7,7 @@
 // }
 
 $nome = $_SESSION["usuario_nome"];
-?>
+?>-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
