@@ -1,0 +1,115 @@
+.purchase{
+    background-color: #A59E37;
+}
+.product{
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 10%;
+    padding: 30px;
+    height: 600px;
+    width: 80%;
+}
+
+
+.carousel-item img {
+  height: 550px;
+  object-fit: cover;
+}
+
+.produto-form{
+  flex-direction: column;
+  gap: 5px;
+  margin: 5% 2% 0 2%;
+  
+}
+.produto-form h1{
+   font-weight: 700;
+   font-size: 45px;
+}
+
+.produto-form .preco{
+   font-weight: 700;
+   font-size: 25px;
+} 
+
+.produto-form .desconto{
+   font-weight: 800;
+   font-size: 15px;
+   color: #A59E37;
+   margin-top: -25px;
+   margin-bottom: 0;
+} 
+.star-rating {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  right: 20%;
+  margin-bottom: 5%;
+}
+
+.star {
+  font-size: 40px;
+  color: #e59b23; /* cor dourada aproximada da imagem */
+  cursor: pointer;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+label{
+   font-family: "Inter", sans-serif;
+   font-weight: 500;
+   font-size: 15px;
+   color: #A59E37;
+}
+.cor-select{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 3px;
+}
+
+.quantidade button{
+  color: #A59E37;
+  border: none;
+  background: none;
+  font-size: 24px; 
+}
+.quantidade input{
+  width: 50px;
+  
+}
+
+.frete-input{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 3px;
+
+}
+.comprar{
+    background-color: #A59E37;
+    border-radius: 10px;
+    padding: 10px 40px;
+    color: #fff;
+    font-weight: bold;
+    border: 2px solid #fff;
+}
+/* 
+#flor_direita{
+    position: absolute;
+    height: auto;
+    z-index: 0;
+    max-width: 150px;
+    right: 0;
+    bottom: 0;
+}
+estão bugadas ainda
+#flor_esquerda{
+  position: absolute;
+  height: auto;
+  z-index: 0;
+  max-width: 150px;
+  top: 0;
+  left: 0;
+} */

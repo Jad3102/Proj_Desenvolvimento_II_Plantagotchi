@@ -1,0 +1,47 @@
+
+.admin_content{
+    background-color: #D79B8F;
+    text-align: center;
+}
+
+.quadro_geral{
+    text-align: center;
+    gap: 20px;
+}
+.individual_square{
+    background-color: #ffff;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 5% 0;
+
+}
+
+.tabela-container{
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    background-color: white;
+}
+.table {
+  width: 100%;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.acoes i {
+      cursor: pointer;
+      margin: 0 5px;
+}
+
+.titulo {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+

@@ -1,31 +1,114 @@
-<?php
-session_start();
+<!-- // session_start();
 
-if (!isset($_SESSION["usuario_id"])) {
-    // Usuário não logado, redireciona
-    header("Location: login.php");
-    exit;
-}
+// if (!isset($_SESSION["usuario_id"])) {
+//     // Usuário não logado, redireciona
+//     header("Location: login.php");
+//     exit;
+// }
 
-$nome = $_SESSION["usuario_nome"];
-?>
+// $nome = $_SESSION["usuario_nome"]; -->
+
+<!-- adicionar tags php -->
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Área do Usuário | PlantaGotchi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Compra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel = "stylesheet" type="text/css" href="../assets/style.css">
 </head>
-<body>
+<body class="purchase">
     <?php require "../components/header.php"; ?>
+    <!-- <img id="flor_esquerda" src="../assets/images/canto-esquerdo-produto.svg" alt="Flores canto esquerdo da tela"> -->
 
-    <div class="container mt-5">
-        <h2>Bem-vindo, <?= htmlspecialchars($nome) ?>!</h2>
-        <p>Aqui você pode realizar suas compras.</p>
+
+    <div class="d-flex product align-items-start">
+        <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                <img src="../assets/images/Image.png" class="d-block w-20" alt="Imagem 1">
+                </div>
+
+                <div class="carousel-item">
+                <img src="../assets/images/Image.png" class="d-block  w-20" alt="Imagem 2">
+                </div>
+
+                <div class="carousel-item">
+                <img src="../assets/images/Image.png" class="d-block  w-20" alt="Imagem 3">
+            </div>
+
+        </div>
+
+        <!-- Botões de navegação -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#meuCarrossel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#meuCarrossel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        </button>
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="2"></button>
+        </div>
+        </div>
+
+        <form action="/comprar" method="POST" class="produto-form d-flex">
+            
+            <h1>Kit Plantagotchi</h1>
+            <p class="preco">R$ 250,00</p>
+            <p class="desconto">10% desconto no pix</p>
+
+            <!-- Seleção de cor -->
+            <label for="cor" >Cor:</label>
+            <select name="cor" id="cor" class="cor-select">
+            <option value="rosa">Rosa</option>
+            <option value="verde">Verde</option>
+            <option value="amarelo">Amarelo</option>
+            </select>
+
+            <!-- Seletor de quantidade -->
+            <label for="quantidade">Quantidade:</label>
+            <div class="quantidade">
+            <button type="button" onclick="diminuirQuantidade()">−</button>
+            <input type="number" name="quantidade" id="quantidade" value="1" min="1" readonly>
+            <button type="button" onclick="aumentarQuantidade()">+</button>
+            </div>
+            
+
+            <!-- Campo de frete -->
+            <label for="frete">Calcule o frete:</label>
+            <input type="text" name="cep" id="frete" class="frete-input" placeholder="Digite seu CEP">
+
+            <p id="resposta-frete">"aqui Resposta frete"</p>
+
+            <!-- Botão de envio -->
+            <button type="submit" class="comprar">Comprar</button>
+        </form>
+
+        <div class="star-rating">
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+        </div>
+
 
     </div>
+    <!-- <img id="flor_direita" src="../assets/images/canto-direito-produto.svg" alt="Flores canto esquerdo da tela"> -->
 
     <?php require "../components/footer.php"; ?>
+
+    <script src="../js/purchase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

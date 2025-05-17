@@ -1,0 +1,14 @@
+.cabecalho{
+    background-color: #FFFFFF;
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#user{
+    justify-content: space-between;
+    color: #A59E37 !important; 
+}
+.nav-link:hover {
+    color: #A1753E !important; 
+}
