@@ -6,10 +6,8 @@
 //     exit;
 // }
 
-// $nome = $_SESSION["usuario_nome"]; -->
-
-<!-- adicionar tags php -->
-
+$nome = $_SESSION["usuario_nome"];
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,7 +22,7 @@
 </head>
 <body class="purchase">
     <?php require "../components/header.php"; ?>
-    <!-- <img id="flor_esquerda" src="../assets/images/canto-esquerdo-produto.svg" alt="Flores canto esquerdo da tela"> -->
+    
 
 
     <div class="d-flex product align-items-start">

@@ -21,6 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Remove caracteres não numéricos do CPF
 $cpf_limpo = preg_replace('/\D/', '', $cpf);
 
+// Verifica se campos obrigatórios estão vazios
+if (empty($nome) || empty($cpf) || empty($data_nascimento) || empty($email) || empty($senha) || empty($cep) || empty($numero)) {
+    $_SESSION['erro_cadastro'] = "Por favor, preencha todos os campos obrigatórios.";
+    header("Location: ../pages/register.php");
+    exit;
+}
+
 // Verifica se CPF tem exatamente 11 dígitos
 if (strlen($cpf_limpo) !== 11) {
     $_SESSION['erro_cadastro'] = "O CPF deve conter exatamente 11 dígitos numéricos.";
@@ -36,13 +43,6 @@ if (!$data_nascimento_formatada || $data_nascimento_formatada > $data_hoje) {
     $_SESSION['erro_cadastro'] = "A data de nascimento não pode ser futura.";
     header("Location: ../pages/register.php");
     exit;
-}
-
-// Verifica se campos obrigatórios estão vazios
-if (empty($nome) || empty($cpf) || empty($data_nascimento) || empty($email) || empty($senha) || empty($cep) || empty($numero)) {
-        $_SESSION['erro_cadastro'] = "Por favor, preencha todos os campos obrigatórios.";
-        header("Location: ../pages/register.php");
-        exit;
 }
 
     try {
