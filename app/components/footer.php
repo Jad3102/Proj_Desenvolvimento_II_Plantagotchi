@@ -1,3 +1,4 @@
+<!-- rodapé -->
 <footer class="container-fluid py-3 bg-white border-top">
     <div class="row justify-content-center text-center">
         <div class="col-auto">

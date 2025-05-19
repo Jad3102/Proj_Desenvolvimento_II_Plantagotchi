@@ -1,4 +1,5 @@
-.cabecalho{
+/* Estilo cabeçalho admin */
+.admin-header{
     background-color: #FFFFFF;
     position: static;
     top: 0;
