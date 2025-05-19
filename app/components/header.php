@@ -5,7 +5,7 @@
         </a>
         <ul class="nav">
             <li class="nav-item"><a class="nav-link" href="../main_content/fullPage.php">Início</a></li>
-            <li class="nav-item"><a class="nav-link" href="#produto">Produto</a></li>
+            <li class="nav-item"><a class="nav-link" href="#the_planta">Produto</a></li>
             <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem Somos</a></li>
             <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
             <li class="nav-item"><a class="nav-link" href="../pages/login.php">Login</a></li>
