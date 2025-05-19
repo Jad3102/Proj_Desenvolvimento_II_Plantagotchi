@@ -1,130 +1,95 @@
+<?php
+session_start();
+require_once __DIR__ . '/../db/connection_db.php';
+
+// Simples verificação de autenticação de admin
+if (!isset($_SESSION["admin_id"])) {
+    header("Location: admin_login.php");
+    exit;
+}
+
+// Atualizar status, se solicitado
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pedido_id"], $_POST["novo_status"])) {
+    $stmt = $conn->prepare("UPDATE pedidos SET status = ? WHERE pedido_id = ?");
+    $stmt->execute([$_POST["novo_status"], $_POST["pedido_id"]]);
+    header("Location: admin.php"); // Recarrega a página
+    exit;
+}
+
+// Buscar todos os pedidos
+$stmt = $conn->query("SELECT p.*, u.nome AS nome_usuario FROM pedidos p JOIN usuarios u ON p.usuario_id = u.usuario_id ORDER BY p.criado_em DESC");
+$pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel = "stylesheet" type="text/css" href="../assets/style.css">
+    <meta charset="UTF-8">
+    <title>Admin - Pedidos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<body class="container py-5">
+    <h1 class="mb-4">Painel do Administrador - Pedidos</h1>
 
-<body class="admin_content">
-
-    <?php require "../components/header_admin.php"; ?>
-
-    <div class="quadro_geral d-flex justify-content-center flex-wrap gap-3">
-        
-        <div class="item individual_square">
-            <h3>Total a receber</h3>
-            <p>Resposta do banco</p>
+    <?php if (count($pedidos) === 0): ?>
+        <div class="alert alert-info">Nenhum pedido encontrado.</div>
+    <?php else: ?>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Cor</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pedidos as $pedido): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($pedido["pedido_id"]) ?></td>
+                            <td><?= htmlspecialchars($pedido["nome_usuario"]) ?></td>
+                            <td><?= htmlspecialchars($pedido["produto_nome"]) ?></td>
+                            <td><?= htmlspecialchars($pedido["cor"]) ?></td>
+                            <td><?= htmlspecialchars($pedido["quantidade"]) ?></td>
+                            <td>R$ <?= number_format($pedido["preco_total"], 2, ',', '.') ?></td>
+                            <td>
+                                <?php
+                                    $badgeClass = match ($pedido["status"]) {
+                                        'Aguardando pagamento' => 'warning',
+                                        'Pendente' => 'info',
+                                        'Pago' => 'success',
+                                        'Cancelado' => 'danger',
+                                        default => 'secondary',
+                                    };
+                                ?>
+                                <span class="badge bg-<?= $badgeClass ?>">
+                                    <?= htmlspecialchars($pedido["status"]) ?>
+                                </span>
+                            </td>
+                            <td><?= date("d/m/Y H:i", strtotime($pedido["criado_em"])) ?></td>
+                            <td>
+                                <form method="POST" class="d-flex flex-column gap-1">
+                                    <input type="hidden" name="pedido_id" value="<?= $pedido["pedido_id"] ?>">
+                                    <select name="novo_status" class="form-select form-select-sm">
+                                        <option <?= $pedido["status"] === "Aguardando pagamento" ? "selected" : "" ?>>Aguardando pagamento</option>
+                                        <option <?= $pedido["status"] === "Pendente" ? "selected" : "" ?>>Pendente</option>
+                                        <option <?= $pedido["status"] === "Pago" ? "selected" : "" ?>>Pago</option>
+                                        <option <?= $pedido["status"] === "Cancelado" ? "selected" : "" ?>>Cancelado</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
         </div>
-        <div class="item individual_square">
-            <h3>Pedidos pagos</h3>
-            <p>Resposta do banco</p>
-        </div>
-        <div class="item individual_square">
-            <h3>Pedidos em Trânsito</h3>
-            <p>Resposta do banco</p>
-        </div>
-        <div class="item individual_square">
-            <h3>Pedidos Completos</h3>
-            <p>Resposta do banco</p>
-        </div>
-        <div class="item individual_square">
-            <h3>Total recebido</h3>
-            <p>Resposta do banco</p>
-        </div>
-       
-    </div>
-
-   <div class="container tabela-container">
-    <div class="titulo">
-     <h3>Pedidos</h3>
-    </div>
-
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th class="acoes">✔️</th>
-          <th>ID</th>
-          <th>Rastreamento</th>
-          <th>Status de Pagamento</th>
-          <th>Destinatário</th>
-          <th>Dúvidas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Exemplo de linha -->
-        <tr>
-          <td class="acoes">
-            <i class="bi bi-pencil"></i>
-            <i class="bi bi-check-square"></i>
-            <i class="bi bi-trash"></i>
-          </td>
-          <td>001</td>
-          <td>TRK123</td>
-          <td>Pago</td>
-          <td>João</td>
-          <td>---</td>
-        </tr>
-        <!-- Repita linhas conforme necessário -->
-          <tr>
-          <td class="acoes">
-            <i class="bi bi-pencil"></i>
-            <i class="bi bi-check-square"></i>
-            <i class="bi bi-trash"></i>
-          </td>
-          <td>001</td>
-          <td>TRK123</td>
-          <td>Pago</td>
-          <td>João</td>
-          <td>---</td>
-        </tr>
-         <tr>
-          <td class="acoes">
-            <i class="bi bi-pencil"></i>
-            <i class="bi bi-check-square"></i>
-            <i class="bi bi-trash"></i>
-          </td>
-          <td>001</td>
-          <td>TRK123</td>
-          <td>Pago</td>
-          <td>João</td>
-          <td>---</td>
-        </tr>
-         <tr>
-          <td class="acoes">
-            <i class="bi bi-pencil"></i>
-            <i class="bi bi-check-square"></i>
-            <i class="bi bi-trash"></i>
-          </td>
-          <td>001</td>
-          <td>TRK123</td>
-          <td>Pago</td>
-          <td>João</td>
-          <td>---</td>
-        </tr>
-         <tr>
-          <td class="acoes">
-            <i class="bi bi-pencil"></i>
-            <i class="bi bi-check-square"></i>
-            <i class="bi bi-trash"></i>
-          </td>
-          <td>001</td>
-          <td>TRK123</td>
-          <td>Pago</td>
-          <td>João</td>
-          <td>---</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-    
-    
-    <?php require "../components/footer.php"; ?>
+    <?php endif; ?>
 </body>
 </html>

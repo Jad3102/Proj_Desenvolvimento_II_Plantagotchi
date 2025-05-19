@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($admin && password_verify($senha, $admin['senha'])) {
             $_SESSION["admin_id"] = $admin["id"];
             $_SESSION["admin_nome"] = $admin["nome"];
-            header("Location: ../pages/admin_orders.php"); // Página de administração
+            header("Location: ../pages/admin.php"); // Página de administração
             exit;
         }
 

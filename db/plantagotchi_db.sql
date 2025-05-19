@@ -1,3 +1,5 @@
+USE plantagotchi_db;
+
 CREATE TABLE usuarios (
     usuario_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -27,20 +29,14 @@ CREATE TABLE admins (
     senha VARCHAR(255) NOT NULL
 );
 
--- Se quiser fazer consulta comum de usuários e os endereços deles
--- SELECT 
---     u.usuario_id,
---     u.nome,
---     u.email,
---     u.senha,
---     e.cep,
---     e.estado,
---     e.cidade,
---     e.bairro,
---     e.rua,
---     e.numero,
---     e.complemento
--- FROM 
---     usuarios u
--- INNER JOIN 
---     enderecos e ON u.usuario_id = e.usuario_id;
+CREATE TABLE pedidos (
+    pedido_id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    produto_nome VARCHAR(100) NOT NULL,
+    cor VARCHAR(50),
+    quantidade INT NOT NULL,
+    preco_total DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'Aguardando pagamento',
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE
+);

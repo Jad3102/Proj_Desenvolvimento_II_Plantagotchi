@@ -1,13 +1,13 @@
-<!-- // session_start();
+<?php
+session_start();
 
-// if (!isset($_SESSION["usuario_id"])) {
-//     // Usuário não logado, redireciona
-//     header("Location: login.php");
-//     exit;
-// }
-
+if (!isset($_SESSION["usuario_id"])) {
+    //Usuário não logado, redireciona
+    header("Location: login.php");
+    exit;
+}
 $nome = $_SESSION["usuario_nome"];
-?>-->
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,8 +22,6 @@ $nome = $_SESSION["usuario_nome"];
 </head>
 <body class="purchase">
     <?php require "../components/header.php"; ?>
-    
-
 
     <div class="d-flex product align-items-start">
         <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
@@ -40,7 +38,6 @@ $nome = $_SESSION["usuario_nome"];
                 <div class="carousel-item">
                 <img src="../assets/images/Image.png" class="d-block  w-20" alt="Imagem 3">
             </div>
-
         </div>
 
         <!-- Botões de navegação -->
@@ -59,7 +56,7 @@ $nome = $_SESSION["usuario_nome"];
         </div>
         </div>
 
-        <form action="/comprar" method="POST" class="produto-form d-flex">
+        <form action="../db/process_purchase.php" method="POST" class="produto-form d-flex">
             
             <h1>Kit Plantagotchi</h1>
             <p class="preco">R$ 250,00</p>
