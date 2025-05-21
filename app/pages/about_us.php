@@ -1,4 +1,4 @@
-<section id="about-us" class="about-us py-5">
+<section id="about_us" class="about_us py-5">
     <div class="container-fluid px-0 text-center">
         <div class="row align-items-center">
             <!-- Imagem à Esquerda do ovinho -->

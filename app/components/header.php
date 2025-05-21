@@ -6,8 +6,8 @@
         <ul class="nav">
             <li class="nav-item"><a class="nav-link" href="../main_content/fullPage.php">Início</a></li>
             <li class="nav-item"><a class="nav-link" href="#the_planta">Produto</a></li>
-            <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem Somos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about_us">Quem Somos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
             <li class="nav-item"><a class="nav-link" href="../pages/login.php">Login</a></li>
         </ul>
     </nav>
