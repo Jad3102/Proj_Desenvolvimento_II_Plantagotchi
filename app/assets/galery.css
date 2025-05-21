@@ -14,24 +14,25 @@
 }
 
 .title {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: 80px;
     font-weight: bold;
     font-style: italic;
     text-align: center;
     background: linear-gradient(90deg, #D79C7F, #E29C30);
-    /* -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    display: inline-block;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  color: transparent;
+   
 }
 
 .foto_individual {
     padding: 20px;
     border-radius: 25px;
     width: 200px; /* tamanho controlado */
-    height: 200px;
+    height: 300px;
     object-fit: cover;
+    margin-bottom: 5%;
 }
 
 /* Cores de fundo específicas */
@@ -49,18 +50,16 @@
 }
 
 /* Tulipas decorativas */
-.tulipas {
-    position: absolute;
-    height: auto;
-    z-index: 0;
+.tulip{
+    max-width: 200px;
 }
-#tuli1 {
+#tulip1 {
     position: absolute;
-    bottom: 0;
     left: 0;
-}
-#tuli2 {
-    position: absolute;
     bottom: 0;
+}
+#tulip2 {
+    position: absolute;
     right: 0;
+    bottom: 0;
 }

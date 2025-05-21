@@ -21,7 +21,7 @@
     text-align: center;
 }
 
-.titulo_contato {
+.title-contact {
     font-size: 2.5rem;
     font-weight: bold;
     border-bottom: 5px solid #F6EEC6;
@@ -30,31 +30,30 @@
     z-index: 1;
 }
 
-.flores_contato {
+.flowers-contact{
+    max-width: 200px;
+    margin: 2%;
+}
+#orange-flower {
     position: absolute;
-    height: auto;
-    z-index: 0;
-    max-width: 150px;
-}
-
-#flor_laranja {
-    top: 0;
     left: 0;
+    top: 0;
 }
-#flor_rosa {
-    bottom: 0;
+#pink-flower{
+    position: absolute;
     right: 0;
+    bottom: 0;
 }
 
-.botoes_contato {
+.btn-contact {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
 }
 
-.botoes_contato .email,
-.botoes_contato .outro {
+.btn-contact .email,
+.btn-contact .outro {
     background-color: #F6EEC6;
     border-radius: 20px;
     padding: 10px 40px;

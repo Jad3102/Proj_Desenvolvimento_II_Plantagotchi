@@ -1,5 +1,5 @@
-<section id="galeria" class="container-fluid galery py-5">
-    <div>
+<section id="galery" class="container-fluid galery py-5">
+    <div class="row">
         <h2 class="title">Galeria</h2>
 
         <div class="container-fluid fotos d-flex flex-wrap justify-content-center">
@@ -9,11 +9,7 @@
             <img class="foto_individual" id="imagem_4" src="imagem4.jpg" alt="Descrição 4">
             <img class="foto_individual" id="imagem_5" src="imagem4.jpg" alt="Descrição 5">
         </div>
+        <img src="../assets/images/tulipa-vermelha.svg" alt="tulipa" class="img-fluid tulip" id="tulip1">
+        <img src="../assets/images/tulipa-vermelha.svg" alt="tulipa" class="img-fluid tulip" id="tulip2">
     </div>
-    <!-- Exemplo de imagem decorativa, comente ou ajuste conforme necessidade -->
-    <!--
-    <div class="tulipas">
-        <img id="tuli2" src="../assets/images/tulipa-vermelha.png" alt="tulipa vermelha sorridente">
-    </div>
-    -->
 </section>

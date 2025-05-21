@@ -1,5 +1,27 @@
-.quem-somos {
-    background-color: #9C963D; 
-    color: white;
+.about-us{
+    background-color:  #A59E37;
     margin-top: -50px;
+
+}
+
+.text{
+    text-align: justify;
+    
+}
+
+.ovinho{
+    max-width: 270px;
+}
+.about-us h2{
+    border-bottom: 3px solid #b1a93f;
+    width:75%;
+    font-size: 50px;
+}
+
+.red-flower{
+    position: absolute;
+    bottom: -80;
+    right: 0;
+    max-width: 100px;
+    z-index: 1;
 }
