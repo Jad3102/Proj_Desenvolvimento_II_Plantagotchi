@@ -1,0 +1,11 @@
+.buy_now{
+    background-color: #A59E37;
+}
+
+.btn-buy_now {
+    border-radius: 20px;    
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+
+}

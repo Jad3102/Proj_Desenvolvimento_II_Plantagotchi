@@ -26,6 +26,8 @@
     <?php require "../pages/about_us.php"; ?>
     <!-- sessão Galeria -->
     <?php require "../pages/galery.php"; ?>
+    <!-- sessão Compre já-->
+    <?php require "../pages/buy_now.php"; ?>
     <!-- sessão Entre em Contato -->
     <?php require "../pages/contact_us.php"; ?>
     <!-- sessão Entre em Rodape -->
