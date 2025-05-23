@@ -21,7 +21,7 @@ unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
     <?php require "../components/header.php"; ?>
 
     <!-- Alerta de erro se não achar o CEP digitado estilizado com bootstrap-->
-    <div id="cepAlertContainer" class="container mt-3"></div>
+    <div id="cepAlertContainer"></div>
 
     <!-- estilização dos alertas dos campos do forms -->
     <?php if ($erro_cadastro): ?>

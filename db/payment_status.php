@@ -1,7 +1,20 @@
 <?php
+//para lidar com retornos de pagamentos com sucesso ou sem
 $status = $_GET["status"] ?? "error";
-$message = $status === "success" ? "Pagamento realizado com sucesso!" : "Erro ao processar pagamento.";
-$alertClass = $status === "success" ? "alert-success" : "alert-danger";
+
+switch ($status) {
+    case "success":
+        $message = "Pagamento realizado com sucesso!";
+        $alertClass = "alert-success";
+        break;
+    case "cancelled":
+        $message = "Pedido cancelado com sucesso.";
+        $alertClass = "alert-warning";
+        break;
+    default:
+        $message = "Erro ao processar pagamento.";
+        $alertClass = "alert-danger";
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +28,6 @@ $alertClass = $status === "success" ? "alert-success" : "alert-danger";
     <div class="alert <?= $alertClass ?>" role="alert">
         <?= $message ?>
     </div>
-    <a href="../pages/purchase.php" class="btn btn-primary">Voltar à página de compras</a>
+    <a href="../pages/my_orders.php" class="btn btn-primary">Acessar meu pedido</a>
 </body>
 </html>

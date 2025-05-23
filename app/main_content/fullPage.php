@@ -1,3 +1,8 @@
+<?php
+session_start();
+$loggedIn = isset($_SESSION['usuario_id']);
+?>
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -19,9 +24,6 @@
     <?php require "../pages/home.php"; ?>
     <!-- sessão O planta  NÃO ALTERADA ESTRUTURA-->
     <?php require "../pages/the_planta.php"; ?>
-
-    <!-- QUESTÃO DO SCROLL INFERIOR PROVAVELMENTE ESTÁ EM ALGUNS DOS ARQUIVOS ABAIXO -->
-
     <!-- sessão quem somos -->
     <?php require "../pages/about_us.php"; ?>
     <!-- sessão Galeria -->

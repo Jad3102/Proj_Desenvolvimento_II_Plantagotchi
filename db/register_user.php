@@ -63,10 +63,11 @@ if (!$data_nascimento_formatada || $data_nascimento_formatada > $data_hoje) {
 
         $conn->commit();
 
+        // informa usuário se o processo deu certo
         $_SESSION['sucesso_cadastro'] = "Cadastro realizado com sucesso!";
         header("Location: ../pages/register.php");
         exit;
-
+        // caso ocorra algum erro, também é retornado ao usuário
     } catch (PDOException $e) {
         $conn->rollBack();
         $_SESSION['erro_cadastro'] = "Erro ao cadastrar. Tente novamente.";

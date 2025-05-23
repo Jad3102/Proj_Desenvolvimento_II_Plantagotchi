@@ -2,6 +2,11 @@
     <div class="row">
         <img src="../assets/images/planta-logo.svg" alt="logo do planta com flores em volta" class="img-fluid plantagotchi-logo">
 
-        <a class="btn btn-buy_now" href="#" role="button">Compre já</a>
+         
+        <?php if ($loggedIn): ?> 
+            <a class="btn btn-buy_now" href="../pages/purchase.php" role="button">Compre já</a>
+        <?php else: ?>
+            <a class="btn btn-buy_now" href="../pages/login.php?redirect=purchase.php" role="button">Compre já</a>
+        <?php endif; ?>
     </div>
 </section>

@@ -28,7 +28,11 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Admin - Pedidos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="container py-5">
+<body>
+
+<?php require "../components/header_admin.php"; ?>
+
+<div class="container py-5 mt-4">
     <h1 class="mb-4">Painel do Administrador - Pedidos</h1>
 
     <?php if (count($pedidos) === 0): ?>
@@ -44,7 +48,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Cor</th>
                         <th>Quantidade</th>
                         <th>Total</th>
-                        <th>Status</th>
+                        <th>Status</th>:
                         <th>Data</th>
                         <th>Ação</th>
                     </tr>
@@ -78,8 +82,9 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <input type="hidden" name="pedido_id" value="<?= $pedido["pedido_id"] ?>">
                                     <select name="novo_status" class="form-select form-select-sm">
                                         <option <?= $pedido["status"] === "Aguardando pagamento" ? "selected" : "" ?>>Aguardando pagamento</option>
-                                        <option <?= $pedido["status"] === "Pendente" ? "selected" : "" ?>>Pendente</option>
                                         <option <?= $pedido["status"] === "Pago" ? "selected" : "" ?>>Pago</option>
+                                        <option <?= $pedido["status"] === "Em preparação" ? "selected" : "" ?>>Em preparação</option>
+                                        <option <?= $pedido["status"] === "Enviado" ? "selected" : "" ?>>Enviado</option>
                                         <option <?= $pedido["status"] === "Cancelado" ? "selected" : "" ?>>Cancelado</option>
                                     </select>
                                     <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>
@@ -91,5 +96,6 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     <?php endif; ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

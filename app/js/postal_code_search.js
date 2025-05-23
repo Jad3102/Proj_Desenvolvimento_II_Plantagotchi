@@ -1,7 +1,7 @@
 function exibirAlertaCEP(mensagem) {
     const container = document.getElementById("cepAlertContainer");
     if (!container) {
-        alert("Erro: container não encontrado.");
+        alert(mensagem);
         return;
     }
 
@@ -17,9 +17,9 @@ function buscarCEP() {
     const cepInput = document.getElementById("cep");
     let cep = cepInput.value.replace(/\D/g, "");
 
-    // Evita buscar CEPs com menos de 8 dígitos
     if (cep.length !== 8) {
-        return; // Não faz nada
+        exibirAlertaCEP("CEP inválido. Insira um CEP com 8 dígitos.");
+        return;
     }
 
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -32,7 +32,7 @@ function buscarCEP() {
                 document.getElementById("estado").value = data.uf;
                 document.getElementById("cepAlertContainer").innerHTML = "";
             } else {
-                exibirAlertaCEP("CEP não encontrado. Verifique e tente novamente.");
+                exibirAlertaCEP("CEP não localizado ou incorreto.");
             }
         })
         .catch(error => {
