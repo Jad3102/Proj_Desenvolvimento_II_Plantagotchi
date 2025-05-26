@@ -10,7 +10,8 @@ if (!isset($_SESSION['usuario_id'])) {
 $usuario_id = $_SESSION['usuario_id'];
 
 try {
-    $stmt = $conn->prepare("SELECT p.pedido_id, p.produto_nome, p.cor, p.quantidade, p.preco_total, p.status, p.criado_em FROM pedidos p WHERE p.usuario_id = ? ORDER BY p.criado_em DESC");
+    $stmt = $conn->prepare("SELECT p.pedido_id, pr.nome AS produto_nome, p.cor, p.quantidade, p.preco_total, p.status, p.criado_em 
+    FROM pedidos p JOIN produtos pr ON p.produto_id = pr.produto_id WHERE p.usuario_id = ? ORDER BY p.criado_em DESC");
     $stmt->execute([$usuario_id]);
     $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

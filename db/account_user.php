@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $usuario_id = $_SESSION['usuario_id'];
-
+//pegamos as informações inseridas pelo usuário em Minha Conta
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cep = $_POST['cep'] ?? '';
     $estado = $_POST['estado'] ?? '';
@@ -20,10 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data_nascimento = $_POST['data_nascimento'] ?? null;
 
     try {
-        // Atualizar endereço
+        // Buscamos no banco
         $stmtCheck = $conn->prepare("SELECT usuario_id FROM enderecos WHERE usuario_id = ?");
         $stmtCheck->execute([$usuario_id]);
-
+        //Atualizamos com as novas informações
         if ($stmtCheck->rowCount() > 0) {
             $stmtEndereco = $conn->prepare("
                 UPDATE enderecos 
@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 WHERE usuario_id = ?
             ");
             $stmtEndereco->execute([$cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $usuario_id]);
+            //Se por algum motivo estiver vazio, é inserido as informações do endereço
         } else {
             $stmtEndereco = $conn->prepare("
                 INSERT INTO enderecos (usuario_id, cep, estado, cidade, bairro, rua, numero, complemento)

@@ -29,14 +29,23 @@ CREATE TABLE admins (
     senha VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE produtos (
+    produto_id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco_unitario DECIMAL(10, 2) NOT NULL,
+    ativo BOOLEAN DEFAULT TRUE
+);
+
 CREATE TABLE pedidos (
     pedido_id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
-    produto_nome VARCHAR(100) NOT NULL,
+    produto_id INT NOT NULL,
     cor VARCHAR(50),
     quantidade INT NOT NULL,
     preco_total DECIMAL(10, 2) NOT NULL,
     status VARCHAR(50) NOT NULL DEFAULT 'Aguardando pagamento',
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE,
+    FOREIGN KEY (produto_id) REFERENCES produtos(produto_id)
 );

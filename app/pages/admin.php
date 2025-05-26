@@ -17,7 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pedido_id"], $_POST["
 }
 
 // Buscar todos os pedidos
-$stmt = $conn->query("SELECT p.*, u.nome AS nome_usuario FROM pedidos p JOIN usuarios u ON p.usuario_id = u.usuario_id ORDER BY p.criado_em DESC");
+$stmt = $conn->query("SELECT p.*, u.nome AS nome_usuario, pr.nome AS nome_produto 
+FROM pedidos p JOIN usuarios u ON p.usuario_id = u.usuario_id 
+JOIN produtos pr ON p.produto_id = pr.produto_id 
+ORDER BY p.criado_em DESC");
 $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -48,7 +51,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Cor</th>
                         <th>Quantidade</th>
                         <th>Total</th>
-                        <th>Status</th>:
+                        <th>Status</th>
                         <th>Data</th>
                         <th>Ação</th>
                     </tr>
@@ -58,7 +61,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <td><?= htmlspecialchars($pedido["pedido_id"]) ?></td>
                             <td><?= htmlspecialchars($pedido["nome_usuario"]) ?></td>
-                            <td><?= htmlspecialchars($pedido["produto_nome"]) ?></td>
+                            <td><?= htmlspecialchars($pedido["nome_produto"]) ?></td>
                             <td><?= htmlspecialchars($pedido["cor"]) ?></td>
                             <td><?= htmlspecialchars($pedido["quantidade"]) ?></td>
                             <td>R$ <?= number_format($pedido["preco_total"], 2, ',', '.') ?></td>

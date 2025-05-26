@@ -20,9 +20,9 @@ $loggedIn = isset($_SESSION['usuario_id']);
   <body>
      <!-- sessão de cabeçalho do projeto -->
     <?php require "../components/header.php"; ?>
-     <!-- sessão inicio -->
+     <!-- sessão Inicio -->
     <?php require "../pages/home.php"; ?>
-    <!-- sessão O planta  NÃO ALTERADA ESTRUTURA-->
+    <!-- sessão O Planta -->
     <?php require "../pages/the_planta.php"; ?>
     <!-- sessão quem somos -->
     <?php require "../pages/about_us.php"; ?>
@@ -32,7 +32,7 @@ $loggedIn = isset($_SESSION['usuario_id']);
     <?php require "../pages/buy_now.php"; ?>
     <!-- sessão Entre em Contato -->
     <?php require "../pages/contact_us.php"; ?>
-    <!-- sessão Entre em Rodape -->
+    <!-- sessão do Rodape -->
     <?php require "../components/footer.php"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
