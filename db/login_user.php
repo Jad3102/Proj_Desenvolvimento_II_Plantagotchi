@@ -1,5 +1,7 @@
 <?php
 session_start();
+ob_start();
+
 require_once "connection_db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -58,3 +60,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 }
+
+ob_end_flush();

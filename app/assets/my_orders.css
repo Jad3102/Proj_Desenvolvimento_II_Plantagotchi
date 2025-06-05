@@ -1,25 +1,15 @@
-.body-admin {
+.my_orders{
     background-color: #D79B8F;
-    text-align: center;
-
+    
 }
 
-.boxes {
-    background-color: white;
-    border-radius: 10px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin: 3% 10px;
-}
-
-.caderno-container {
+.caderno {
     background-color: white;
     border-radius: 12px;
     padding: 20px;
     margin: 30px auto;
     max-width: 95%;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 .caderno-tabela {
@@ -50,7 +40,7 @@
 
 .titulo-tabela {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 35px;
     margin-bottom: 15px;
     
 }

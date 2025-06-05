@@ -20,14 +20,20 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Minha Conta | PlantaGotchi</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel = "stylesheet" type="text/css" href="../assets/style.css">
     <script src="../js/postal_code_search.js"></script>
 </head>
 
 <?php require "../components/header.php"; ?>
 
-<body class="bg-light">
-    <div class="container mt-5">
+<body>
+    <div class="container mt-5 my_account">
         <h2 class="mb-4">Minha Conta</h2>
 
                 <!-- Pop-up se der algum erro ou se ocorrer com sucesso, exibindo de forma amigável pro usuário. -->
@@ -39,7 +45,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         <div id="cepAlertContainer"></div>
 
-        <form action="../db/account_user.php" method="POST" class="card p-4 shadow">
+        <form action="../db/account_user.php" method="POST" class="card p-4 shadow form-my_account">
             <div class="mb-3">
                 <label class="form-label">Nome completo</label>
                 <input type="text" class="form-control" value="<?= htmlspecialchars($usuario['nome']) ?>" disabled>
@@ -88,7 +94,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                 <label class="form-label">Complemento</label>
                 <input type="text" name="complemento" class="form-control" value="<?= htmlspecialchars($usuario['complemento']) ?>">
             </div>
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            <button type="submit" class="btn button-save">Salvar Alterações</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

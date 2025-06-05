@@ -12,7 +12,15 @@ if (!isset($_SESSION['usuario_id'])) {
     <meta charset="UTF-8">
     <title>Meus Pedidos | PlantaGotchi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel = "stylesheet" type="text/css" href="../assets/style.css">
+    
+<script>
+
 function carregarPedidos() {
     fetch('../db/orders_user.php')
         .then(res => res.json())
@@ -64,29 +72,31 @@ function carregarPedidos() {
         document.addEventListener('DOMContentLoaded', carregarPedidos);
     </script>
 </head>
-<body class="bg-light">
+<body>
 
 <?php require "../components/header.php"; ?>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Meus Pedidos</h2>
-    <div class="card shadow">
-        <div class="card-body table-responsive">
-            <table class="table table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th>ID Pedido</th>
-                        <th>Produto</th>
-                        <th>Cor</th>
-                        <th>Quantidade</th>
-                        <th>Valor Total</th>
-                        <th>Status</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tabelaPedidos">
-                </tbody>
-            </table>
+<div class="container-fluid min-vh-100 d-flex flex-column align-items-center pt-4 my_orders">
+    <div class="row col-10 caderno">
+        <h2 class="mb-4 titulo-tabela">Meus Pedidos</h2>
+        <div class="card shadow">
+            <div class="card-body table-responsive">
+                <table class="table table-hover caderno-tabela">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Produto</th>
+                            <th>Cor</th>
+                            <th>Quantidade</th>
+                            <th>Valor Total</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaPedidos">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
