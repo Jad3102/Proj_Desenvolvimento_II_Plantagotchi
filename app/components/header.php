@@ -13,17 +13,30 @@
             <li class="nav-item"><a class="nav-link" href="#galery">Galeria</a></li>
             <li class="nav-item"><a class="nav-link" href="#buy_now">Comprar</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
-            <!-- Com sessão de login ativo, exibidos o nome do usuário no canto superior direito durante navegação -->
+
+            <!-- Sessão ativa -->
             <?php if (isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome'])): ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>!
+                        <span id="badge-header" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+                            0
+                        </span>
                     </a>
-                    <!-- Inserção de opção "Minha Conta" para acesso aos produtos e "Sair" para finalizar sessão " -->
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="../pages/my_account.php">Minha Conta</a></li>
-                        <li><a class="dropdown-item" href="../pages/my_orders.php">Meus Pedidos</a></li>
-                        <li><a class="dropdown-item text-danger" href="../pages/logout.php">Sair</a></li>
+                        <li>
+                            <a class="dropdown-item" href="../pages/my_account.php">Minha Conta</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="../pages/my_orders.php">
+                                Meus Pedidos
+                                <span id="badge-menu" class="badge bg-danger rounded-pill d-none">0</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item text-danger" href="../pages/logout.php">Sair</a>
+                        </li>
                     </ul>
                 </li>
             <?php else: ?>
@@ -31,4 +44,31 @@
             <?php endif; ?>
         </ul>
     </nav>
+
+    <!-- Script para buscar notificações -->
+    <?php if (isset($_SESSION['usuario_id'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../db/notification_count.php')
+                .then(res => res.json())
+                .then(data => {
+                    const count = data.count || 0;
+                    const badgeHeader = document.getElementById('badge-header');
+                    const badgeMenu = document.getElementById('badge-menu');
+
+                    if (count > 0) {
+                        if (badgeHeader) {
+                            badgeHeader.classList.remove('d-none');
+                            badgeHeader.textContent = count;
+                        }
+                        if (badgeMenu) {
+                            badgeMenu.classList.remove('d-none');
+                            badgeMenu.textContent = count;
+                        }
+                    }
+                })
+                .catch(err => console.error('Erro ao carregar notificações:', err));
+        });
+    </script>
+    <?php endif; ?>
 </header>

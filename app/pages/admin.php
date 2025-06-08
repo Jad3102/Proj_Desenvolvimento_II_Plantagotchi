@@ -1,27 +1,36 @@
 <?php
 session_start();
 require_once __DIR__ . '/../db/connection_db.php';
+require_once __DIR__ . '/../db/admin_logic.php';
 
-// Simples verificação de autenticação de admin
 if (!isset($_SESSION["admin_id"])) {
     header("Location: admin_login.php");
     exit;
 }
 
-// Atualizar status, se solicitado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["pedido_id"], $_POST["novo_status"])) {
     $stmt = $conn->prepare("UPDATE pedidos SET status = ? WHERE pedido_id = ?");
     $stmt->execute([$_POST["novo_status"], $_POST["pedido_id"]]);
-    header("Location: admin.php"); // Recarrega a página
+    header("Location: admin.php");
     exit;
 }
 
-// Buscar todos os pedidos
-$stmt = $conn->query("SELECT p.*, u.nome AS nome_usuario, pr.nome AS nome_produto 
-FROM pedidos p JOIN usuarios u ON p.usuario_id = u.usuario_id 
-JOIN produtos pr ON p.produto_id = pr.produto_id 
-ORDER BY p.criado_em DESC");
-$pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$filtros = [];
+if (!empty($_GET)) {
+    $filtros = [
+        'nome'       => $_GET['nome'] ?? null,
+        'cor'        => $_GET['cor'] ?? null,
+        'quantidade' => $_GET['quantidade'] ?? null,
+        'valor_min'  => $_GET['valor_min'] ?? null,
+        'valor_max'  => $_GET['valor_max'] ?? null,
+        'status'     => $_GET['status'] ?? null,
+        'data_ini'   => $_GET['data_ini'] ?? null,
+        'data_fim'   => $_GET['data_fim'] ?? null,
+    ];
+}
+
+$pedidos = buscarPedidos($conn, $filtros);
+$metricas = calcularMetricas($conn);
 ?>
 
 <!DOCTYPE html>
@@ -30,45 +39,103 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Admin - Pedidos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel = "stylesheet" type="text/css" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        #filtro-container {
+            display: none;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body class="body-admin">
-
 <?php require "../components/header_admin.php"; ?>
 
-<div class="container-fluid min-vh-100 d-flex flex-column align-items-center justify-content-start pt-4">
-     <!-- Cards de total -->
+<div class="container-fluid min-vh-100 pt-4">
+    <!-- Métricas -->
     <div class="row w-100 justify-content-center mb-3">
-      <div class="col-md-2 boxes">Total a Receber<br><strong>R$0000</strong></div>
-      <div class="col-md-2 boxes">Pedidos Pagos<br><strong>R$0000</strong></div>
-      <div class="col-md-2 boxes">Pedidos em Trânsito<br><strong>0</strong></div>
-      <div class="col-md-2 boxes">Pedidos Completos<br><strong>0</strong></div>
-      <div class="col-md-2 boxes">Total Recebido<br><strong>R$0000</strong></div>
-    </div> 
-        
-     <!-- Tabela estilo caderno -->
+        <div class="col-md-2 boxes">Total a Receber<br><strong>R$<?= number_format($metricas['total_a_receber'], 2, ',', '.') ?></strong></div>
+        <div class="col-md-2 boxes">Pedidos Pagos<br><strong><?= $metricas['pedidos_pagos'] ?></strong></div>
+        <div class="col-md-2 boxes">Pedidos em Andamento<br><strong><?= $metricas['pedidos_em_preparacao'] ?></strong></div>
+        <div class="col-md-2 boxes">Pedidos Completos<br><strong><?= $metricas['pedidos_enviados'] ?></strong></div>
+        <div class="col-md-2 boxes">Total Recebido<br><strong>R$<?= number_format($metricas['total_recebido'], 2, ',', '.') ?></strong></div>
+        <div class="col-md-2 boxes">Pedidos Pendentes<br><strong><?= $metricas['pedidos_aguardando_pagamento'] ?></strong></div>
+    </div>
+
+    <!-- Filtro -->
+    <div class="text-end mb-2 me-2">
+        <button class="btn btn-outline-secondary" onclick="toggleFiltro()">
+            <i class="fas fa-filter"></i> Filtros
+        </button>
+    </div>
+
+    <div id="filtro-container" class="border rounded p-3 mb-4">
+        <form method="GET" class="row g-2">
+            <div class="col-md-3"><input type="text" name="nome" class="form-control" placeholder="Nome do cliente" value="<?= htmlspecialchars($_GET['nome'] ?? '') ?>"></div>
+            <div class="col-md-2">
+                <select name="cor" class="form-select">
+                    <option value="">Todas as cores</option>
+                    <?php
+                    $cores = ['Rosa', 'Verde', 'Amarelo'];
+                    foreach ($cores as $cor) {
+                        $selected = ($_GET['cor'] ?? '') === $cor ? 'selected' : '';
+                        echo "<option value=\"$cor\" $selected>$cor</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="col-md-1"><input type="number" name="quantidade" class="form-control" placeholder="Qtd" value="<?= htmlspecialchars($_GET['quantidade'] ?? '') ?>"></div>
+            <div class="col-md-2"><input type="number" name="valor_min" step="0.01" class="form-control" placeholder="Valor mín." value="<?= htmlspecialchars($_GET['valor_min'] ?? '') ?>"></div>
+            <div class="col-md-2"><input type="number" name="valor_max" step="0.01" class="form-control" placeholder="Valor máx." value="<?= htmlspecialchars($_GET['valor_max'] ?? '') ?>"></div>
+            <div class="col-md-2">
+                <select name="status" class="form-select">
+                    <option value="">Todos os status</option>
+                    <?php
+                    $statuses = ['Aguardando pagamento', 'Pago', 'Pendente', 'Em preparação', 'Enviado', 'Cancelado'];
+                    foreach ($statuses as $status) {
+                        $selected = ($_GET['status'] ?? '') === $status ? 'selected' : '';
+                        echo "<option value=\"$status\" $selected>$status</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="col-md-2"><input type="date" name="data_ini" class="form-control" value="<?= htmlspecialchars($_GET['data_ini'] ?? '') ?>"></div>
+            <div class="col-md-2"><input type="date" name="data_fim" class="form-control" value="<?= htmlspecialchars($_GET['data_fim'] ?? '') ?>"></div>
+            <div class="col-md-2 d-grid"><button type="submit" class="btn btn-primary">Filtrar</button></div>
+            <div class="col-md-2 d-grid">
+                <a href="admin.php" class="btn btn-outline-danger">Limpar Filtro</a>
+            </div>
+            <!-- <script>
+                // Formatação dos campos valor_min e valor_max para duas casas decimais
+                document.querySelectorAll('input[name="valor_min"], input[name="valor_max"]').forEach(input => {
+                    input.addEventListener('input', () => {
+                        const valor = parseFloat(input.value).toFixed(2);
+                        input.value = isNaN(valor) ? '' : valor;
+                    });
+                });
+            </script> -->
+        </form>
+    </div>
+
+    <!-- Tabela -->
     <div class="col-12">
         <?php if (count($pedidos) === 0): ?>
-            <div class="alert alert-custom" role="alert">Nenhum pedido encontrado.</div>
+            <div class="alert alert-warning" role="alert">Nenhum pedido encontrado.</div>
         <?php else: ?>
-             <div class="caderno-container">
+            <div class="caderno-container">
                 <div class="titulo-tabela">Pedidos</div>
                 <hr>
-                <table class="caderno-tabela">
-                    <thead>
+                <table class="table table-striped table-bordered">
+                    <thead class="table-light">
                         <tr>
                             <th>ID</th>
                             <th>Cliente</th>
                             <th>Produto</th>
                             <th>Cor</th>
-                            <th>Quantidade</th>
+                            <th>Qtd</th>
                             <th>Total</th>
                             <th>Status</th>
+                            <th>SLA</th>
                             <th>Data</th>
                             <th>Ação</th>
                         </tr>
@@ -84,30 +151,32 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td>R$ <?= number_format($pedido["preco_total"], 2, ',', '.') ?></td>
                                 <td>
                                     <?php
-                                        $badgeClass = match ($pedido["status"]) {
-                                            'Aguardando pagamento' => 'warning',
-                                            'Pendente' => 'info',
-                                            'Pago' => 'success',
-                                            'Cancelado' => 'danger',
-                                            default => 'secondary',
-                                        };
+                                    $badgeClass = match ($pedido["status"]) {
+                                        'Aguardando pagamento' => 'warning',
+                                        'Pago' => 'success',
+                                        'Pendente' => 'info',
+                                        'Em preparação' => 'primary',
+                                        'Enviado' => 'secondary',
+                                        'Cancelado' => 'danger',
+                                        default => 'light',
+                                    };
                                     ?>
-                                    <span class="badge bg-<?= $badgeClass ?>">
-                                        <?= htmlspecialchars($pedido["status"]) ?>
-                                    </span>
+                                    <span class="badge bg-<?= $badgeClass ?>"><?= htmlspecialchars($pedido["status"]) ?></span>
                                 </td>
+                                <td><?= calcularSLA($pedido["status"], $pedido["criado_em"]) ?></td>
                                 <td><?= date("d/m/Y H:i", strtotime($pedido["criado_em"])) ?></td>
                                 <td>
                                     <form method="POST" class="d-flex flex-column gap-1">
                                         <input type="hidden" name="pedido_id" value="<?= $pedido["pedido_id"] ?>">
                                         <select name="novo_status" class="form-select form-select-sm">
-                                            <option <?= $pedido["status"] === "Aguardando pagamento" ? "selected" : "" ?>>Aguardando pagamento</option>
-                                            <option <?= $pedido["status"] === "Pago" ? "selected" : "" ?>>Pago</option>
-                                            <option <?= $pedido["status"] === "Em preparação" ? "selected" : "" ?>>Em preparação</option>
-                                            <option <?= $pedido["status"] === "Enviado" ? "selected" : "" ?>>Enviado</option>
-                                            <option <?= $pedido["status"] === "Cancelado" ? "selected" : "" ?>>Cancelado</option>
+                                            <?php
+                                            foreach ($statuses as $status) {
+                                                $selected = $pedido["status"] === $status ? "selected" : "";
+                                                echo "<option $selected>$status</option>";
+                                            }
+                                            ?>
                                         </select>
-                                        <button type="submit" class="btn btn-sm button">Atualizar</button>
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">Atualizar</button>
                                     </form>
                                 </td>
                             </tr>
@@ -117,7 +186,15 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endif; ?>
     </div>
-    
+</div>
+
+<script>
+function toggleFiltro() {
+    const filtro = document.getElementById('filtro-container');
+    filtro.style.display = (filtro.style.display === 'none' || filtro.style.display === '') ? 'block' : 'none';
+}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
