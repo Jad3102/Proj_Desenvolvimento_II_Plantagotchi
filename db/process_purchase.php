@@ -13,13 +13,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cor = $_POST["cor"] ?? "rosa";
     $quantidade = intval($_POST["quantidade"]);
     $preco_unitario = 250.00;
-    $preco_total = $preco_unitario * $quantidade * 0.9; // 10% de desconto no Pix
+    $desconto = 0.9;
+    $frete_valor = floatval($_POST["frete_valor"] ?? 0);
+
+    $preco_total = ($preco_unitario * $quantidade * $desconto) + $frete_valor;
 
     try {
         $stmt = $conn->prepare("INSERT INTO pedidos (usuario_id, produto_id, cor, quantidade, preco_total, status) VALUES (?, ?, ?, ?, ?, 'Aguardando pagamento')");
         $stmt->execute([$usuario_id, $produto_id, $cor, $quantidade, $preco_total]);
+
         $pedido_id = $conn->lastInsertId();
-        // pedido quando processado e criado no banco, direciona o cliente à tela de qr code para pagamento aqui
         header("Location: ../db/payment.php?pedido_id=" . $pedido_id);
         exit;
     } catch (PDOException $e) {
