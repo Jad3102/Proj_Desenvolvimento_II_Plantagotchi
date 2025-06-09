@@ -45,19 +45,18 @@ function carregarPedidos() {
                 }[pedido.status] || 'text-secondary';
 
                 linha.innerHTML = `
-                    <td>#${pedido.pedido_id}</td>
-                    <td>${pedido.produto_nome}</td>
-                    <td>${pedido.cor}</td>
-                    <td>${pedido.quantidade}</td>
-                    <td>R$ ${parseFloat(pedido.preco_total).toFixed(2)}</td>
-                    <td class="${statusColor} fw-bold">${pedido.status}</td>
-                    <td>
-                        ${pedido.status === 'Aguardando pagamento'
-                            ? `<a href="../db/payment.php?pedido_id=${pedido.pedido_id}" class="btn btn-sm btn-outline-primary">Pagar Agora</a>`
-                            : ''
-                        }
-                    </td>
-                `;
+                <td>#${pedido.pedido_id}</td>
+                <td>${pedido.nome_produto}</td>
+                <td>${pedido.cor}</td>
+                <td>${pedido.quantidade}</td>
+                <td>R$ ${parseFloat(pedido.frete).toFixed(2).replace('.', ',')}</td>
+                <td>R$ ${parseFloat(pedido.preco_total).toFixed(2).replace('.', ',')}</td>
+                <td class="${statusColor}">${pedido.status}</td>
+                <td>${new Date(pedido.criado_em).toLocaleString('pt-BR')}</td>
+                ${pedido.status === 'Aguardando pagamento' ? `
+                    <td><a href="../pagamento/payment.php?pedido_id=${pedido.pedido_id}" class="btn btn-sm btn-outline-success">Pagar</a></td>
+                ` : `<td>-</td>`}
+`;
 
                 tabela.appendChild(linha);
             });
@@ -84,12 +83,14 @@ function carregarPedidos() {
                 <table class="table table-hover caderno-tabela">
                     <thead class="table-light">
                         <tr>
-                            <th>ID Pedido</th>
+                            <th>ID</th>
                             <th>Produto</th>
                             <th>Cor</th>
                             <th>Quantidade</th>
-                            <th>Valor Total</th>
+                            <th>Frete</th>
+                            <th>Total</th>
                             <th>Status</th>
+                            <th>Data</th>
                             <th>Ação</th>
                         </tr>
                     </thead>

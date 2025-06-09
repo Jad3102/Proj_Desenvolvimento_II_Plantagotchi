@@ -1,5 +1,18 @@
 <?php
+require_once __DIR__ . '/../db/connection_db.php';
+
 session_start();
+
+$usuario_id = $_SESSION["usuario_id"];
+$endereco = null;
+
+try {
+    $stmt = $conn->prepare("SELECT * FROM enderecos WHERE usuario_id = ?");
+    $stmt->execute([$usuario_id]);
+    $endereco = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Erro ao buscar endereço: " . $e->getMessage();
+}
 
 if (!isset($_SESSION["usuario_id"])) {
     //Usuário não logado, redireciona
@@ -8,6 +21,7 @@ if (!isset($_SESSION["usuario_id"])) {
 }
 $nome = $_SESSION["usuario_nome"];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -73,17 +87,25 @@ $nome = $_SESSION["usuario_nome"];
             <!-- Seletor de quantidade -->
             <label for="quantidade">Quantidade:</label>
             <div class="quantidade">
-            <button type="button" onclick="diminuirQuantidade()">−</button>
+            <button type="button" onclick="diminuirQuantidade(); calcularValores()">−</button>
             <input type="number" name="quantidade" id="quantidade" value="1" min="1" readonly>
-            <button type="button" onclick="aumentarQuantidade()">+</button>
+            <button type="button" onclick="aumentarQuantidade(); calcularValores()">+</button>
             </div>
             
+            <!-- Endereço -->
+            <div id="endereco-usuario" class="mt-3">
+            <strong>Endereço de entrega:</strong><br>
+            <?= htmlspecialchars($endereco["rua"]) ?>, <?= htmlspecialchars($endereco["bairro"]) ?><br>
+            <?= htmlspecialchars($endereco["cidade"]) ?> - <?= htmlspecialchars($endereco["estado"]) ?><br>
+            CEP: <?= htmlspecialchars($endereco["cep"]) ?>
+            </div>
+            <input type="hidden" id="estadoUsuario" value="<?= htmlspecialchars($endereco["estado"]) ?>">
 
-            <!-- Campo de frete -->
-            <label for="frete">Calcule o frete:</label>
-            <input type="text" name="cep" id="frete" class="frete-input" placeholder="Digite seu CEP">
-
-            <p id="resposta-frete">"aqui Resposta frete"</p>
+                <!-- Área de valores -->
+            <div id="valores">
+                <p id="valor-frete">Valor do Frete: </p>
+                <p id="valor-total">Valor Total: Calculando: </p>
+            </div>
 
             <!-- Botão de envio -->
             <button type="submit" class="comprar">Comprar</button>
@@ -103,7 +125,17 @@ $nome = $_SESSION["usuario_nome"];
 
     <?php require "../components/footer.php"; ?>
 
-    <script src="../js/purchase.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/purchase.js"></script>
+<script src="../js/shipping_states.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        calcularValores(); // calcula o valor inicial com base no estado do usuário
+
+        // recalcular também se a cor for alterada, se necessário
+        document.getElementById("quantidade").addEventListener("change", calcularValores);
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

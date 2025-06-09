@@ -105,15 +105,6 @@ $metricas = calcularMetricas($conn);
             <div class="col-md-2 d-grid">
                 <a href="admin.php" class="btn btn-outline-danger">Limpar Filtro</a>
             </div>
-            <!-- <script>
-                // Formatação dos campos valor_min e valor_max para duas casas decimais
-                document.querySelectorAll('input[name="valor_min"], input[name="valor_max"]').forEach(input => {
-                    input.addEventListener('input', () => {
-                        const valor = parseFloat(input.value).toFixed(2);
-                        input.value = isNaN(valor) ? '' : valor;
-                    });
-                });
-            </script> -->
         </form>
     </div>
 
@@ -133,6 +124,7 @@ $metricas = calcularMetricas($conn);
                             <th>Produto</th>
                             <th>Cor</th>
                             <th>Qtd</th>
+                            <th>Frete</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>SLA</th>
@@ -148,6 +140,7 @@ $metricas = calcularMetricas($conn);
                                 <td><?= htmlspecialchars($pedido["nome_produto"]) ?></td>
                                 <td><?= htmlspecialchars($pedido["cor"]) ?></td>
                                 <td><?= htmlspecialchars($pedido["quantidade"]) ?></td>
+                                <td>R$ <?= number_format($pedido["frete"], 2, ',', '.') ?></td>
                                 <td>R$ <?= number_format($pedido["preco_total"], 2, ',', '.') ?></td>
                                 <td>
                                     <?php
