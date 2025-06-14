@@ -14,6 +14,7 @@
 @import url(buy_now.css);
 @import url(my_account.css);
 @import url(my_orders.css);
+@import url(payment.css);
 
 html {
     scroll-behavior: smooth;/*isso serve para que o site desça de forma mais fluida nas sessões*/

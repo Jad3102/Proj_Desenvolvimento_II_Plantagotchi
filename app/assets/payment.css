@@ -1,0 +1,30 @@
+.payment-body{
+    background:  #D79B8F;
+    
+}
+
+.payment_status{
+    background-color: #F6EEC6;
+}
+
+.payment-card{
+    background-color: white;
+    height: 500px;           /* defina uma altura */
+    margin-top: 10%;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc; /* Borda fina */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    
+}
+.btn-payed{
+    background-color: #A59E37;
+    color: white;
+}
+
+.btn-cancel{
+    background-color: red;
+    color: white;
+}
+

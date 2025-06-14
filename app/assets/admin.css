@@ -10,7 +10,8 @@
     padding: 25px;
     text-align: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin: 3% 10px;
+    margin: 3% 5px;
+    width: 200px;
 }
 
 .caderno-container {
@@ -66,6 +67,11 @@
 }
 
 .button{
+    background-color: #A59E37;
+    color: white;
+}
+
+.btn-filter,.btn-update{
     background-color: #A59E37;
     color: white;
 }

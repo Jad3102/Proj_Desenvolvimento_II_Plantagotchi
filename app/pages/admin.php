@@ -62,121 +62,124 @@ $metricas = calcularMetricas($conn);
         <div class="col-md-2 boxes">Pedidos Pendentes<br><strong><?= $metricas['pedidos_aguardando_pagamento'] ?></strong></div>
     </div>
 
-    <!-- Filtro -->
-    <div class="text-end mb-2 me-2">
-        <button class="btn btn-outline-secondary" onclick="toggleFiltro()">
-            <i class="fas fa-filter"></i> Filtros
-        </button>
-    </div>
-
-    <div id="filtro-container" class="border rounded p-3 mb-4">
-        <form method="GET" class="row g-2">
-            <div class="col-md-3"><input type="text" name="nome" class="form-control" placeholder="Nome do cliente" value="<?= htmlspecialchars($_GET['nome'] ?? '') ?>"></div>
-            <div class="col-md-2">
-                <select name="cor" class="form-select">
-                    <option value="">Todas as cores</option>
-                    <?php
-                    $cores = ['Rosa', 'Verde', 'Amarelo'];
-                    foreach ($cores as $cor) {
-                        $selected = ($_GET['cor'] ?? '') === $cor ? 'selected' : '';
-                        echo "<option value=\"$cor\" $selected>$cor</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="col-md-1"><input type="number" name="quantidade" class="form-control" placeholder="Qtd" value="<?= htmlspecialchars($_GET['quantidade'] ?? '') ?>"></div>
-            <div class="col-md-2"><input type="number" name="valor_min" step="0.01" class="form-control" placeholder="Valor mín." value="<?= htmlspecialchars($_GET['valor_min'] ?? '') ?>"></div>
-            <div class="col-md-2"><input type="number" name="valor_max" step="0.01" class="form-control" placeholder="Valor máx." value="<?= htmlspecialchars($_GET['valor_max'] ?? '') ?>"></div>
-            <div class="col-md-2">
-                <select name="status" class="form-select">
-                    <option value="">Todos os status</option>
-                    <?php
-                    $statuses = ['Aguardando pagamento', 'Pago', 'Pendente', 'Em preparação', 'Enviado', 'Cancelado'];
-                    foreach ($statuses as $status) {
-                        $selected = ($_GET['status'] ?? '') === $status ? 'selected' : '';
-                        echo "<option value=\"$status\" $selected>$status</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="col-md-2"><input type="date" name="data_ini" class="form-control" value="<?= htmlspecialchars($_GET['data_ini'] ?? '') ?>"></div>
-            <div class="col-md-2"><input type="date" name="data_fim" class="form-control" value="<?= htmlspecialchars($_GET['data_fim'] ?? '') ?>"></div>
-            <div class="col-md-2 d-grid"><button type="submit" class="btn btn-primary">Filtrar</button></div>
-            <div class="col-md-2 d-grid">
-                <a href="admin.php" class="btn btn-outline-danger">Limpar Filtro</a>
-            </div>
-        </form>
-    </div>
+    
+    
 
     <!-- Tabela -->
-    <div class="col-12">
+    <div class="col-12 text-center">
         <?php if (count($pedidos) === 0): ?>
             <div class="alert alert-warning" role="alert">Nenhum pedido encontrado.</div>
         <?php else: ?>
             <div class="caderno-container">
-                <div class="titulo-tabela">Pedidos</div>
-                <hr>
-                <table class="table table-striped table-bordered">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Cliente</th>
-                            <th>Produto</th>
-                            <th>Cor</th>
-                            <th>Qtd</th>
-                            <th>Frete</th>
-                            <th>Total</th>
-                            <th>Status</th>
-                            <th>SLA</th>
-                            <th>Data</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($pedidos as $pedido): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($pedido["pedido_id"]) ?></td>
-                                <td><?= htmlspecialchars($pedido["nome_usuario"]) ?></td>
-                                <td><?= htmlspecialchars($pedido["nome_produto"]) ?></td>
-                                <td><?= htmlspecialchars($pedido["cor"]) ?></td>
-                                <td><?= htmlspecialchars($pedido["quantidade"]) ?></td>
-                                <td>R$ <?= number_format($pedido["frete"], 2, ',', '.') ?></td>
-                                <td>R$ <?= number_format($pedido["preco_total"], 2, ',', '.') ?></td>
-                                <td>
+                <div class="row-title d-flex justify-content-between align-items-center">
+                    <div class="titulo-tabela">Pedidos</div>
+                    <div class="text-end mb-2 me-2">
+                        <button class="btn btn-filter" onclick="toggleFiltro()">
+                            <i class="fas fa-filter"></i> Filtros
+                        </button>
+                    </div>
+                </div>
+
+        <div id="filtro-container" class="border rounded p-3 mb-4">
+            <form method="GET" class="row g-2">
+                <div class="col-md-3"><input type="text" name="nome" class="form-control" placeholder="Nome do cliente" value="<?= htmlspecialchars($_GET['nome'] ?? '') ?>"></div>
+                <div class="col-md-2">
+                    <select name="cor" class="form-select">
+                        <option value="">Todas as cores</option>
+                        <?php
+                        $cores = ['Rosa', 'Verde', 'Amarelo'];
+                        foreach ($cores as $cor) {
+                            $selected = ($_GET['cor'] ?? '') === $cor ? 'selected' : '';
+                            echo "<option value=\"$cor\" $selected>$cor</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col-md-1"><input type="number" name="quantidade" class="form-control" placeholder="Qtd" value="<?= htmlspecialchars($_GET['quantidade'] ?? '') ?>"></div>
+                <div class="col-md-2"><input type="number" name="valor_min" step="0.01" class="form-control" placeholder="Valor mín." value="<?= htmlspecialchars($_GET['valor_min'] ?? '') ?>"></div>
+                <div class="col-md-2"><input type="number" name="valor_max" step="0.01" class="form-control" placeholder="Valor máx." value="<?= htmlspecialchars($_GET['valor_max'] ?? '') ?>"></div>
+                <div class="col-md-2">
+                    <select name="status" class="form-select">
+                        <option value="">Todos os status</option>
+                        <?php
+                        $statuses = ['Aguardando pagamento', 'Pago', 'Pendente', 'Em preparação', 'Enviado', 'Cancelado'];
+                        foreach ($statuses as $status) {
+                            $selected = ($_GET['status'] ?? '') === $status ? 'selected' : '';
+                            echo "<option value=\"$status\" $selected>$status</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col-md-2"><input type="date" name="data_ini" class="form-control" value="<?= htmlspecialchars($_GET['data_ini'] ?? '') ?>"></div>
+                <div class="col-md-2"><input type="date" name="data_fim" class="form-control" value="<?= htmlspecialchars($_GET['data_fim'] ?? '') ?>"></div>
+                <div class="col-md-2 d-grid"><button type="submit" class="btn btn-filter">Filtrar</button></div>
+                <div class="col-md-2 d-grid">
+                    <a href="admin.php" class="btn btn-outline-danger">Limpar Filtro</a>
+                </div>
+            </form>
+        </div>
+        <hr>
+        <table class="table table-striped table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Cor</th>
+                    <th>Qtd</th>
+                    <th>Frete</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>SLA</th>
+                    <th>Data</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($pedidos as $pedido): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($pedido["pedido_id"]) ?></td>
+                        <td><?= htmlspecialchars($pedido["nome_usuario"]) ?></td>
+                        <td><?= htmlspecialchars($pedido["nome_produto"]) ?></td>
+                        <td><?= htmlspecialchars($pedido["cor"]) ?></td>
+                        <td><?= htmlspecialchars($pedido["quantidade"]) ?></td>
+                        <td>R$ <?= number_format($pedido["frete"], 2, ',', '.') ?></td>
+                        <td>R$ <?= number_format($pedido["preco_total"], 2, ',', '.') ?></td>
+                        <td>
+                            <?php
+                            $badgeClass = match ($pedido["status"]) {
+                                'Aguardando pagamento' => 'warning',
+                                'Pago' => 'success',
+                                'Pendente' => 'info',
+                                'Em preparação' => 'primary',
+                                'Enviado' => 'secondary',
+                                'Cancelado' => 'danger',
+                                default => 'light',
+                            };
+                            ?>
+                            <span class="badge bg-<?= $badgeClass ?>"><?= htmlspecialchars($pedido["status"]) ?></span>
+                        </td>
+                        <td><?= calcularSLA($pedido["status"], $pedido["criado_em"]) ?></td>
+                        <td><?= date("d/m/Y H:i", strtotime($pedido["criado_em"])) ?></td>
+                        <td>
+                            <form method="POST" class="d-flex flex-column gap-1">
+                                <input type="hidden" name="pedido_id" value="<?= $pedido["pedido_id"] ?>">
+                                <select name="novo_status" class="form-select form-select-sm">
                                     <?php
-                                    $badgeClass = match ($pedido["status"]) {
-                                        'Aguardando pagamento' => 'warning',
-                                        'Pago' => 'success',
-                                        'Pendente' => 'info',
-                                        'Em preparação' => 'primary',
-                                        'Enviado' => 'secondary',
-                                        'Cancelado' => 'danger',
-                                        default => 'light',
-                                    };
+                                    foreach ($statuses as $status) {
+                                        $selected = $pedido["status"] === $status ? "selected" : "";
+                                        echo "<option $selected>$status</option>";
+                                    }
                                     ?>
-                                    <span class="badge bg-<?= $badgeClass ?>"><?= htmlspecialchars($pedido["status"]) ?></span>
-                                </td>
-                                <td><?= calcularSLA($pedido["status"], $pedido["criado_em"]) ?></td>
-                                <td><?= date("d/m/Y H:i", strtotime($pedido["criado_em"])) ?></td>
-                                <td>
-                                    <form method="POST" class="d-flex flex-column gap-1">
-                                        <input type="hidden" name="pedido_id" value="<?= $pedido["pedido_id"] ?>">
-                                        <select name="novo_status" class="form-select form-select-sm">
-                                            <?php
-                                            foreach ($statuses as $status) {
-                                                $selected = $pedido["status"] === $status ? "selected" : "";
-                                                echo "<option $selected>$status</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <button type="submit" class="btn btn-sm btn-outline-primary">Atualizar</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-update">Atualizar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
         <?php endif; ?>
     </div>
 </div>
