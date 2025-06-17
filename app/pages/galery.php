@@ -9,6 +9,7 @@
             <img class="foto_individual" id="imagem_4" src="imagem4.jpg" alt="Descrição 4">
             <img class="foto_individual" id="imagem_5" src="imagem4.jpg" alt="Descrição 5">
         </div>
+        
         <img src="../assets/images/tulipa-vermelha.svg" alt="tulipa" class="img-fluid tulip" id="tulip1">
         <img src="../assets/images/tulipa-vermelha.svg" alt="tulipa" class="img-fluid tulip" id="tulip2">
     </div>

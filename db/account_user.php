@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $usuario_id = $_SESSION['usuario_id'];
-//pegamos as informações inseridas pelo usuário em Minha Conta
+//pegamos do banco as informações inseridas pelo usuário em Minha Conta
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cep = $_POST['cep'] ?? '';
     $estado = $_POST['estado'] ?? '';
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data_nascimento = $_POST['data_nascimento'] ?? null;
 
     try {
-        // Buscamos no banco
+        // Buscamos endereço do usuário no banco
         $stmtCheck = $conn->prepare("SELECT usuario_id FROM enderecos WHERE usuario_id = ?");
         $stmtCheck->execute([$usuario_id]);
         //Atualizamos com as novas informações
@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 WHERE usuario_id = ?
             ");
             $stmtEndereco->execute([$cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $usuario_id]);
+
             //Se por algum motivo estiver vazio, é inserido as informações do endereço
         } else {
             $stmtEndereco = $conn->prepare("
@@ -40,14 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmtEndereco->execute([$usuario_id, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento]);
         }
 
-        // Atualizar data de nascimento
+        // Atualizar data de nascimento se foi colocada nova
         $stmtUser = $conn->prepare("UPDATE usuarios SET data_nascimento = ? WHERE usuario_id = ?");
         $stmtUser->execute([$data_nascimento, $usuario_id]);
 
+        // Mensagem de sucesso na alteração
         header("Location: ../pages/my_account.php?sucesso=1");
         exit;
     } catch (PDOException $e) {
-        // Redirecionar com erro
+        // Caso não, redirecionar com erro
         header("Location: ../pages/my_account.php?erro=1");
         exit;
     }

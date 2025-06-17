@@ -1,6 +1,7 @@
 .purchase{
     background-color: #A59E37;
 }
+
 .product{
     background-color: #fff;
     border-radius: 20px;
@@ -10,7 +11,6 @@
     width: 80%;
     
 }
-
 
 .carousel-item img {
   height: 550px;
@@ -25,6 +25,7 @@
   
 
 }
+
 .produto-form h1{
    font-weight: 700;
    font-size: 45px;
@@ -41,7 +42,8 @@
    color: #A59E37;
    margin-top: -25px;
    margin-bottom: 0;
-} 
+}
+
 .star-rating {
   display: flex;
   gap: 8px;
@@ -52,19 +54,21 @@
 
 .star {
   font-size: 40px;
-  color: #e59b23; /* cor dourada aproximada da imagem */
+  color: #e59b23;
   cursor: pointer;
 }
 
 .star:hover {
   transform: scale(1.2);
 }
+
 label{
    font-family: "Inter", sans-serif;
    font-weight: 500;
    font-size: 15px;
    color: #A59E37;
 }
+
 .cor-select{
   width: 100%;
   padding: 8px;
@@ -78,6 +82,7 @@ label{
   background: none;
   font-size: 24px; 
 }
+
 .quantidade input{
   width: 50px;
   
@@ -90,6 +95,7 @@ label{
   border-radius: 3px;
 
 }
+
 .comprar{
     background-color: #A59E37;
     border-radius: 10px;

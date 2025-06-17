@@ -18,7 +18,6 @@ if (!isset($_SESSION['usuario_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel = "stylesheet" type="text/css" href="../assets/style.css">
-    
 <script>
 
 function carregarPedidos() {
@@ -32,7 +31,6 @@ function carregarPedidos() {
                 tabela.innerHTML = `<tr><td colspan="7" class="text-center">${pedidos.mensagem}</td></tr>`;
                 return;
             }
-
             pedidos.forEach(pedido => {
                 const linha = document.createElement('tr');
 
@@ -57,7 +55,6 @@ function carregarPedidos() {
                     <td><a href="../pagamento/payment.php?pedido_id=${pedido.pedido_id}" class="btn btn-sm btn-outline-success">Pagar</a></td>
                 ` : `<td>-</td>`}
 `;
-
                 tabela.appendChild(linha);
             });
         })
@@ -67,7 +64,6 @@ function carregarPedidos() {
                 '<tr><td colspan="7" class="text-center text-danger">Erro ao carregar pedidos.</td></tr>';
         });
 }
-
         document.addEventListener('DOMContentLoaded', carregarPedidos);
     </script>
 </head>

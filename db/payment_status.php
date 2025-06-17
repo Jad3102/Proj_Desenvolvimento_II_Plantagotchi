@@ -1,5 +1,5 @@
 <?php
-//para lidar com retornos de pagamentos com sucesso ou sem
+//para lidar com retornos de pagamentos com sucesso ou sem sucesso
 $status = $_GET["status"] ?? "error";
 
 switch ($status) {
@@ -38,11 +38,9 @@ switch ($status) {
         </div>
         <a href="../pages/my_orders.php" class="btn btn-primary">Acessar meu pedido</a>
     </div>
-
     <div class="imagem-inferior-fixa">
             <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas">
     </div>
-
     
 </body>
 </html>

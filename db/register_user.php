@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $numero = $_POST['numero'] ?? '';
     $complemento = $_POST['complemento'] ?? '';
 
-    // Remove caracteres não numéricos do CPF
+// Remove caracteres não numéricos do CPF
 $cpf_limpo = preg_replace('/\D/', '', $cpf);
 
 // Verifica se campos obrigatórios estão vazios
@@ -44,7 +44,6 @@ if (!$data_nascimento_formatada || $data_nascimento_formatada > $data_hoje) {
     header("Location: ../pages/register.php");
     exit;
 }
-
     try {
         $conn->beginTransaction();
 

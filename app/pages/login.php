@@ -27,7 +27,7 @@ unset($_SESSION['erro_login']);
     <?php require "../components/header.php"; ?>
 
     <div class="container">
-        <!-- ALERTAS -->
+        <!-- Alertas estilizados -->
         <?php if ($erro_login): ?>
             <div class="mt-3">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -44,7 +44,7 @@ unset($_SESSION['erro_login']);
             </div>
         <?php endif; ?>
 
-        <!-- FORMULÁRIO DE LOGIN -->
+        <!-- Formulário de login -->
         <?php if (!$ja_logado): ?>
         <div class="forms-container">
             <h2 class="text-center">Login</h2>

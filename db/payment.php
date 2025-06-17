@@ -17,7 +17,6 @@ try {
         echo "Pedido não encontrado.";
         exit;
     }
-
     $valor = $pedido['preco_total'];
     $frete = $pedido['frete'];
     $valor_produto = $valor - $frete;
@@ -49,7 +48,7 @@ try {
         <p>Total: <strong>R$ <?= number_format($valor, 2, ',', '.') ?></strong></p>
 
         <div class="mb-4">
-            <img src="../images/qrcode.png" alt="QR Code Pix" class="img-fluid" style="max-width: 200px;">
+            <img src="/../images/qrcode.png" alt="QR Code Pix" class="img-fluid" style="max-width: 200px;">
         </div>
 
         <p>Escaneie o QR Code com seu aplicativo bancário para efetuar o pagamento.</p>
@@ -70,6 +69,5 @@ try {
             <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas">
         </div>
     </div>
-
 </body>
 </html>

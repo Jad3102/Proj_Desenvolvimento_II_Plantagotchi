@@ -1,5 +1,4 @@
 <section>
-    <!-- parte do home mesmo -->
     <div class="container my-5 position-relative p-5 home">
             <div class="row d-flex align-items-center justify-content-between home-content">
                 <div class="col-md-5">

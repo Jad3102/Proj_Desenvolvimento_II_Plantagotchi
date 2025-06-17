@@ -5,7 +5,8 @@
         <div class="btn-contact">
             <a class="btn email" href="#" role="button">Email</a>
             <a class="btn outro" href="#" role="button">Outro</a>
-        </div>        
+        </div>    
+            
     </div>
     <img class="flowers-contact" id="orange-flower" src="../assets/images/florzinhas_laranja.png" alt="Flores laranja">
     <img class="flowers-contact" id="pink-flower" src="../assets/images/florzinhas_rosa.png" alt="Flores Rosa">

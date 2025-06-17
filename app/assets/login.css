@@ -1,12 +1,12 @@
 
 .forms-container {
     max-width: 400px;
-    margin: 10vh auto; /* Centraliza verticalmente */
+    margin: 10vh auto;
     padding: 20px;
-    border: 1px solid #ccc; /* Borda fina */
-    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #ccc;
+    border-radius: 8px;
     background-color: #E49E28;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 
 }
 

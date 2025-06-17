@@ -5,9 +5,9 @@
 
 
 }
+
 .title-planta{
     color: #A59E37;
-    /* font-size: 10000px;  não sei porque não funciona*/
     margin: 3% 3% -5% 3%;
     font-weight: 900;
     border-bottom: 3px solid #A59E37;
@@ -24,6 +24,7 @@
     background-position: center;
 
 }
+
 .list-items-planta{
     list-style: none;
     z-index: 5;
@@ -34,16 +35,19 @@
     top: 31%;
     left: 18%;
 }
+
 .list-items-planta #item_2{
     position: absolute;
     top: 83%;
     left: 20%;
 }
+
 .list-items-planta #item_3{
     position: absolute;
     top:13%;
     left: 47%;
 }
+
 .list-items-planta #item_4{
     position: absolute;
     top: 70%;
