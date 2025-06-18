@@ -3,7 +3,8 @@
     <div class="container my-5 position-relative p-5 home">
             <div class="row d-flex align-items-center justify-content-between home-content">
                 <div class="col-md-5">
-                    <p class="sentence">Frase <br> Grande <br> Impacto</p>
+            
+                    <p class="sentence">Cultivando<br>um futuro<br>Inteligente</p>
                 </div>
                 <div class="col-md-5">
                     <div class="img-placeholder d-inline-block">

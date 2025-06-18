@@ -1,6 +1,6 @@
 .the_planta {
     background-color: #F6EEC6;  
-    min-height: 700px;
+    min-height: 750px;
     margin:4% 0;
 
 
@@ -22,6 +22,7 @@
     background-size: 90%; 
     background-repeat: no-repeat;
     background-position: center;
+    margin-top: 3%;
 
 }
 .list-items-planta{
@@ -36,18 +37,18 @@
 }
 .list-items-planta #item_2{
     position: absolute;
-    top: 83%;
+    top: 90%;
     left: 20%;
 }
 .list-items-planta #item_3{
     position: absolute;
-    top:13%;
+    top:10%;
     left: 47%;
 }
 .list-items-planta #item_4{
     position: absolute;
-    top: 70%;
-    left: 75%;
+    top: 75%;
+    left: 80%;
 }
 
 .flower{

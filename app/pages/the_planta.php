@@ -14,7 +14,7 @@
                     </li>
                     <li id="item_2">
                         <h2>Aprenda se divertindo!</h2>
-                        <p>Teste, brinque, decore e viva a experiencia de criar seu próprio robô</p>
+                        <p>Teste, brinque, decore e viva a experiencia de criar seu próprio robô.</p>
                     </li>
                     <li id="item_3">
                         <h2>Desenvolva responsabilidade!</h2>
@@ -22,7 +22,7 @@
                     </li>
                     <li id="item_4">
                         <h2>Aproveite a fofura!</h2>
-                        <p>Aproveite sem moderações a fofura do  Planta</p>
+                        <p>Aproveite sem moderações a fofura do  Planta.</p>
                     </li>
                 </ul>
                      <!-- Parte da flor que passa para proxima sessão -->

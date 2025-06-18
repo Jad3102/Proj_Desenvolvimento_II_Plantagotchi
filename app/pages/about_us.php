@@ -10,10 +10,7 @@
             <div class="col-md-5 text-white">
                 <h2 class="mb-5 text-uppercase">Quem Somos</h2>
                 <p class="fs-5 text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries, but also...
+                        O projeto Plantagotchi teve início em uma aula de Internet das Coisas da Universidade Senac-RS, onde após ser criado com grande empolgação e diversão, a ideia surgiu: "porque não espalhar essa incrível experiência com mais pessoas?" e assim, nossa querido planta nasce e cresce. Atualmente estando em fase de testes, a equipe do planta busca levar conhecimento, diversão, fofura e responsabilidade a todos aqueles que queiram de fato entrar em ação.
                 </p>
             </div>
         </div>
