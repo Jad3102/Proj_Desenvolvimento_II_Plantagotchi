@@ -4,5 +4,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN apt-get update && apt-get install -y default-mysql-client
 
+RUN apt-get update && apt-get install -y libpng-dev && docker-php-ext-install gd
+
 COPY ./app /var/www/html
 COPY ./db /var/www/html
