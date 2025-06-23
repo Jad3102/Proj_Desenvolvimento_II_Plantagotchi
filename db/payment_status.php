@@ -32,11 +32,11 @@ switch ($status) {
 </head>
 <body class="payment_status">
 
-    <div class="container py-5 justify-content-center">
-        <div class="alert <?= $alertClass ?>" role="alert">
+    <div class="container container-payment_status py-5 ">
+        <div class="alert <?= $alertClass ?> alert-card justify-content-center align-items-center shadow-sm" role="alert">
             <?= $message ?>
         </div>
-        <a href="../pages/my_orders.php" class="btn btn-primary">Acessar meu pedido</a>
+        <a href="../pages/my_orders.php" class="btn alert-btn">Acessar meu pedido</a>
     </div>
     <div class="imagem-inferior-fixa">
             <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas">

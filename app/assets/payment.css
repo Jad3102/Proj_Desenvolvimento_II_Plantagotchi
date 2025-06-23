@@ -6,7 +6,26 @@
 .payment_status{
     background-color: #F6EEC6;
 }
+.container-payment_status{
+    height: 100%;
 
+}
+
+.alert-btn{
+    background-color: #D79B8F;
+    border: none;
+    color: rgb(255, 255, 255);
+
+}
+.alert-card{
+    background-color: #ffffff;
+    border: none;
+    color: black;
+    font-size: 30px;
+    padding: 30px;
+
+
+}
 .payment-card{
     background-color: white;
     height: 500px;

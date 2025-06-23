@@ -39,21 +39,22 @@ $nome = $_SESSION["usuario_nome"];
 <body class="purchase">
     <?php require "../components/header.php"; ?>
 
-    <div class="d-flex product align-items-start">
-        <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
+    <div class="d-flex product align-items-center">
+        <div id="meuCarrossel" class="carousel slide carousel-custom" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                <div class="carousel-item active">
-                <img src="../assets/images/Image.png" class="d-block w-20" alt="Imagem 1">
-                </div>
-
-                <div class="carousel-item">
-                <img src="../assets/images/Image.png" class="d-block  w-20" alt="Imagem 2">
-                </div>
-
-                <div class="carousel-item">
-                <img src="../assets/images/Image.png" class="d-block  w-20" alt="Imagem 3">
+            <div class="carousel-item active">
+                <img src="../assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 1">
             </div>
+
+            <div class="carousel-item">
+                <img src="../assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 2">
+            </div>
+
+            <div class="carousel-item">
+                <img src="../assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 3">
+            </div>
+
         </div>
 
         <!-- Botões de navegação -->
@@ -66,15 +67,23 @@ $nome = $_SESSION["usuario_nome"];
 
         <!-- Indicadores -->
         <div class="carousel-indicators">
-        <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="2"></button>
         </div>
-        </div>
-
+    </div>
+    <div class="product-info d-flex  w-100 ">
+       
         <form action="../db/process_purchase.php" method="POST" class="produto-form d-flex">
             
             <h1>Kit Plantagotchi</h1>
+                <div class="star-rating d-flex align-items-start">
+                    <span class="star">&#9734;</span>
+                    <span class="star">&#9734;</span>
+                    <span class="star">&#9734;</span>
+                    <span class="star">&#9734;</span>
+                    <span class="star">&#9734;</span>
+                </div>
             <p class="preco">R$ 250,00</p>
             <p class="desconto">10% desconto no pix</p>
 
@@ -112,21 +121,13 @@ $nome = $_SESSION["usuario_nome"];
             <!-- Botão de envio -->
             <button type="submit" class="comprar">Comprar</button>
         </form>
-
-        <div class="star-rating">
-            <span class="star">&#9734;</span>
-            <span class="star">&#9734;</span>
-            <span class="star">&#9734;</span>
-            <span class="star">&#9734;</span>
-            <span class="star">&#9734;</span>
-        </div>
-
-
     </div>
-    <!-- <img id="flor_direita" src="../assets/images/canto-direito-produto.svg" alt="Flores canto esquerdo da tela"> -->
+</div>
+</div>
+    
 
-    <?php require "../components/footer.php"; ?>
 
+<?php require "../components/footer.php"; ?>    
 <script src="../js/purchase.js"></script>
 <script src="../js/shipping_states.js"></script>
 <script>

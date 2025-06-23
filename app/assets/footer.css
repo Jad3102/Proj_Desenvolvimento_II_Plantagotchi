@@ -3,4 +3,5 @@ footer {
     color: rgb(156, 156, 156);
     background-color: #fff;
     width: 100%;
+    bottom: 0;
 }
