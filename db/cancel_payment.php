@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pedido_id'])) {
     } catch (PDOException $e) {
         echo "Erro ao cancelar pagamento: " . $e->getMessage();
     }
+    
 } else {
     echo "Requisição inválida.";
 }

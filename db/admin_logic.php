@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../db/connection_db.php';
 
+// Função de buscar informações dos pedidos para exibir na tabela
 function buscarPedidos(PDO $conn, array $filtros = []): array {
     $where = [];
     $params = [];
@@ -54,6 +55,7 @@ function buscarPedidos(PDO $conn, array $filtros = []): array {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Função que calcula métricas dos dados superiores da tabela do admin
 function calcularMetricas(PDO $conn): array {
     $sql = "SELECT status, preco_total FROM pedidos";
     $stmt = $conn->query($sql);
@@ -91,6 +93,7 @@ function calcularMetricas(PDO $conn): array {
     ];
 }
 
+//Função de calcula o tempo que um pedicdo está em "Aguardando pagamento"
 function calcularSLA(string $status, string $criadoEm): string {
     if ($status !== 'Aguardando pagamento') return '';
     $dataAtual = new DateTime();

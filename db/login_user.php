@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../pages/login.php");
         exit;
     }
-
     try {
         // Verificação de admin
         $stmtAdmin = $conn->prepare("SELECT id, nome, senha FROM admins WHERE email = ?");
@@ -47,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
             exit;
         }
-
         // Se não encontrar usuário ou senha inválida
         $_SESSION["erro_login"] = "E-mail ou senha incorretos.";
         header("Location: ../pages/login.php");
@@ -60,5 +58,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 }
-
 ob_end_flush();

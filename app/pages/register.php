@@ -16,7 +16,6 @@ unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
     <script src="../js/format_cpf.js" defer></script>
     <script src="../js/postal_code_search.js" defer></script>
 </head>
-
 <body>
     <?php require "../components/header.php"; ?>
 
@@ -95,7 +94,6 @@ unset($_SESSION['erro_cadastro'], $_SESSION['sucesso_cadastro']);
             <button type="submit" class="btn btn_bege w-100">Criar Cadastro</button>
         </form>
     </div>
-
     <div class="imagem-inferior-fixa">
         <img src="../assets/images/flores_lateral_direita.png" alt="Flores coloridas no canto inferior direito">
     </div>

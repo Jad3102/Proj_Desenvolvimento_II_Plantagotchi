@@ -36,7 +36,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="container mt-5 my_account">
         <h2 class="mb-4">Minha Conta</h2>
 
-                <!-- Pop-up se der algum erro ou se ocorrer com sucesso, exibindo de forma amigável pro usuário. -->
+        <!-- Pop-up se der algum erro ou se ocorrer com sucesso -->
         <?php if (isset($_GET['erro'])): ?>
             <div class="alert alert-danger">Erro ao atualizar dados, tente novamente mais tarde.</div>
         <?php elseif (isset($_GET['sucesso'])): ?>

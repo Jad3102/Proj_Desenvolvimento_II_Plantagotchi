@@ -6,6 +6,7 @@ session_start();
 $usuario_id = $_SESSION["usuario_id"];
 $endereco = null;
 
+// busca o endereço no banco que o usuário cadastrou
 try {
     $stmt = $conn->prepare("SELECT * FROM enderecos WHERE usuario_id = ?");
     $stmt->execute([$usuario_id]);
@@ -15,10 +16,11 @@ try {
 }
 
 if (!isset($_SESSION["usuario_id"])) {
-    //Usuário não logado, redireciona
+    //Usuário não logado, redireciona para login
     header("Location: login.php");
     exit;
 }
+
 $nome = $_SESSION["usuario_nome"];
 ?>
 

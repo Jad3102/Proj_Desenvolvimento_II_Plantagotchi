@@ -9,7 +9,7 @@ if (!isset($_SESSION["usuario_id"])) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $usuario_id = $_SESSION["usuario_id"];
-    $produto_id = 1; // ID do PlantaGotchi
+    $produto_id = 1; // ID do PlantaGotchi no banco
     $cor = $_POST["cor"] ?? "rosa";
     $quantidade = intval($_POST["quantidade"]);
 
@@ -26,9 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Endereço não encontrado.";
         exit;
     }
-
     $estado = strtoupper($endereco['estado']);
-
     // Definindo o frete conforme estado
     $fretes = [
         "AC"=>35.00, "AL"=>25.00, "AP"=>38.00, "AM"=>42.00, "BA"=>22.00,

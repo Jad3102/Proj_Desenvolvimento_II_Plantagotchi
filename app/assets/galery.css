@@ -1,7 +1,7 @@
 .galery {
     background-color: #F6EEC6;
     text-align: center;
-    overflow-x: hidden; /* importante para evitar scroll horizontal */
+    overflow-x: hidden;
     padding: 2rem 1rem;
 }
 
@@ -29,7 +29,7 @@
 .foto_individual {
     padding: 20px;
     border-radius: 25px;
-    width: 200px; /* tamanho controlado */
+    width: 200px;
     height: 300px;
     object-fit: cover;
     margin-bottom: 5%;

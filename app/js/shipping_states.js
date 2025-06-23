@@ -34,7 +34,7 @@ function calcularValores() {
     const precoUnitario = 250.00;
     const precoComDesconto = precoUnitario * 0.9;
     const valorProduto = precoComDesconto * quantidade;
-    const frete = fretePorEstado[estado] || 30.00; // padrão se estado não encontrado
+    const frete = fretePorEstado[estado] || 30.00; // Valor padrão se estado não encontrado
     const total = valorProduto + frete;
 
     document.getElementById("valor-frete").textContent = `Valor do Frete: R$ ${frete.toFixed(2)}`;

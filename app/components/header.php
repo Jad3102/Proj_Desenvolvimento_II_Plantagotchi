@@ -5,7 +5,6 @@
             <img src="../assets/images/planta_logo.png" alt="Logo do Site" width="30">
         </a>
 
-        <!-- Navegação -->
         <ul class="nav">
             <li class="nav-item"><a class="nav-link" href="../main_content/fullPage.php">Início</a></li>
             <li class="nav-item"><a class="nav-link" href="#the_planta">Produto</a></li>
@@ -14,7 +13,7 @@
             <li class="nav-item"><a class="nav-link" href="#buy_now">Comprar</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
 
-            <!-- Sessão ativa -->
+            <!-- Sessão ativa quando usuário está logado -->
             <?php if (isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome'])): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,11 +28,13 @@
                         </li>
                         <li>
                             <a class="dropdown-item d-flex justify-content-between align-items-center" href="../pages/my_orders.php">
-                                Meus Pedidos
-                                <span id="badge-menu" class="badge bg-danger rounded-pill d-none">0</span>
+                            Meus Pedidos
+                            <span id="badge-menu" class="badge bg-danger rounded-pill d-none">0</span>
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <a class="dropdown-item text-danger" href="../pages/logout.php">Sair</a>
                         </li>

@@ -25,10 +25,9 @@
                         <p>Aproveite sem moderações a fofura do  Planta.</p>
                     </li>
                 </ul>
-                     <!-- Parte da flor que passa para proxima sessão -->
+    <!-- Parte da flor que passa para proxima sessão -->
     <img src="../assets/images/flor-vermelha-the_planta.svg" alt="Flor vermelha com miolo amarelo sorrindo" class="img-fluid flower">
             </div>
-       
         </div>
     </div>
 </section>

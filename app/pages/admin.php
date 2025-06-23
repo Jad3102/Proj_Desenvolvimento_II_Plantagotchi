@@ -62,10 +62,7 @@ $metricas = calcularMetricas($conn);
         <div class="col-md-2 boxes">Pedidos Pendentes<br><strong><?= $metricas['pedidos_aguardando_pagamento'] ?></strong></div>
     </div>
 
-    
-    
-
-    <!-- Tabela -->
+    <!-- Tabela de pedidos -->
     <div class="col-12 text-center">
         <?php if (count($pedidos) === 0): ?>
             <div class="alert alert-warning" role="alert">Nenhum pedido encontrado.</div>
@@ -190,7 +187,6 @@ function toggleFiltro() {
     filtro.style.display = (filtro.style.display === 'none' || filtro.style.display === '') ? 'block' : 'none';
 }
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

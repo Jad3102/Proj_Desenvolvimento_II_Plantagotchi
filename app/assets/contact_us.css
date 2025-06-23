@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow-x: hidden; /* evita scroll horizontal */
+    overflow-x: hidden;
     padding: 2rem 1rem;
 }
 
