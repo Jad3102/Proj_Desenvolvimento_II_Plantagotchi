@@ -1,4 +1,3 @@
-<!-- usando biblioteca phpqrcode para gerar imagens de qrcode locais com o php -->
 <?php
 require_once __DIR__ . '/phpqrcode/qrlib.php';
 
