@@ -48,7 +48,12 @@ try {
         <p>Total: <strong>R$ <?= number_format($valor, 2, ',', '.') ?></strong></p>
 
         <div class="mb-4">
-            <img src="/../images/qrcode.png" alt="QR Code Pix" class="img-fluid" style="max-width: 200px;">
+           <?php
+                $texto_qrcode = "Pagamento do PlantaGotchi\nPedido: #$pedido_id\nTotal: R$ " . number_format($valor, 2, ',', '.');
+                $texto_qrcode_url = urlencode($texto_qrcode);
+                $url_qrcode = "../lib/generate_qr.php?text=$texto_qrcode_url";
+            ?>
+            <img src="<?= $url_qrcode ?>" alt="QR Code Pix" class="img-fluid" style="max-width: 200px;">
         </div>
 
         <p>Escaneie o QR Code com seu aplicativo bancário para efetuar o pagamento.</p>
