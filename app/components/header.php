@@ -1,3 +1,7 @@
+<?php
+// Define caminho dinâmico para links do menu
+$fullPagePath = '/main_content/fullPage.php';
+?>
 <header class="container-fluid shadow-sm main-header">
     <nav class="navbar px-5 px-md-5 d-flex justify-content-between align-items-center">
         <!-- Logo -->
@@ -6,12 +10,12 @@
         </a>
 
         <ul class="nav">
-            <li class="nav-item"><a class="nav-link" href="../main_content/fullPage.php">Início</a></li>
-            <li class="nav-item"><a class="nav-link" href="#the_planta">Produto</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about_us">Quem Somos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#galery">Galeria</a></li>
-            <li class="nav-item"><a class="nav-link" href="#buy_now">Comprar</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#the_planta">Produto</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#about_us">Quem Somos</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#galery">Galeria</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#buy_now">Comprar</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#contact">Contato</a></li>
 
             <!-- Sessão ativa quando usuário está logado -->
             <?php if (isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome'])): ?>
