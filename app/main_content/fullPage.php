@@ -21,19 +21,19 @@ $loggedIn = isset($_SESSION['usuario_id']);
      <!-- sessão de cabeçalho do projeto -->
     <?php require __DIR__ . '/../components/header.php'; ?>
      <!-- sessão Inicio -->
-    <?php require "../pages/home.php"; ?>
+    <?php require __DIR__ . "../pages/home.php"; ?>
     <!-- sessão O Planta -->
-    <?php require "../pages/the_planta.php"; ?>
+    <?php require __DIR__ . "../pages/the_planta.php"; ?>
     <!-- sessão quem somos -->
-    <?php require "../pages/about_us.php"; ?>
+    <?php require __DIR__ . "../pages/about_us.php"; ?>
     <!-- sessão Galeria -->
-    <?php require "../pages/galery.php"; ?>
+    <?php require __DIR__ . "../pages/galery.php"; ?>
     <!-- sessão Compre já-->
-    <?php require "../pages/buy_now.php"; ?>
+    <?php require __DIR__ . "../pages/buy_now.php"; ?>
     <!-- sessão Entre em Contato -->
-    <?php require "../pages/contact_us.php"; ?>
+    <?php require __DIR__ . "../pages/contact_us.php"; ?>
     <!-- sessão do Rodape -->
-    <?php require "../components/footer.php"; ?>
+    <?php require __DIR__ . "../components/footer.php"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
