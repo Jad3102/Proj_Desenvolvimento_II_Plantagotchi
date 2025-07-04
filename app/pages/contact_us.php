@@ -8,6 +8,6 @@
         </div>    
             
     </div>
-    <img class="flowers-contact" id="orange-flower" src="../assets/images/florzinhas_laranja.png" alt="Flores laranja">
-    <img class="flowers-contact" id="pink-flower" src="../assets/images/florzinhas_rosa.png" alt="Flores Rosa">
+    <img class="flowers-contact" id="orange-flower" src="app/assets/images/florzinhas_laranja.png" alt="Flores laranja">
+    <img class="flowers-contact" id="pink-flower" src="app/assets/images/florzinhas_rosa.png" alt="Flores Rosa">
 </section>

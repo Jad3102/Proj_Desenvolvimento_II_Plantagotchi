@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <!-- Imagem à Esquerda do ovinho -->
             <div class="col-md-5 text-center">
-                <img src="../assets/images/ovinho.svg" alt="Imagem Ovinho" class="img-fluid ovinho">
+                <img src="app/assets/images/ovinho.svg" alt="Imagem Ovinho" class="img-fluid ovinho">
             </div>
 
             <!-- texto à direita de Quem Somos -->
@@ -14,6 +14,6 @@
                 </p>
             </div>
         </div>
-        <img src="../assets/images/flor-vermelha-about_us.svg" alt="Flor vermelha" class="img-fluid red-flower">
+        <img src="app/assets/images/flor-vermelha-about_us.svg" alt="Flor vermelha" class="img-fluid red-flower">
     </div>
 </section>

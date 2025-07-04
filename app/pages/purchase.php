@@ -44,15 +44,15 @@ $nome = $_SESSION["usuario_nome"];
             <div class="carousel-inner">
 
             <div class="carousel-item active">
-                <img src="../assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 1">
+                <img src="app/assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 1">
             </div>
 
             <div class="carousel-item">
-                <img src="../assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 2">
+                <img src="app/assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 2">
             </div>
 
             <div class="carousel-item">
-                <img src="../assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 3">
+                <img src="app/assets/images/Image.png" class="d-block img-fluid carousel-image" alt="Imagem 3">
             </div>
 
         </div>
