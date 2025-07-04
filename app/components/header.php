@@ -6,7 +6,7 @@ $fullPagePath = '/main_content/fullPage.php';
     <nav class="navbar px-5 px-md-5 d-flex justify-content-between align-items-center">
         <!-- Logo -->
         <a class="navbar-brand" href="../main_content/fullPage.php">
-            <img src="../assets/images/planta_logo.png" alt="Logo do Site" width="30">
+            <img src="app/assets/images/planta_logo.png" alt="Logo do Site" width="30">
         </a>
 
         <ul class="nav">
