@@ -24,7 +24,8 @@ unset($_SESSION['erro_login']);
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <?php require "../components/header.php"; ?>
+
+    <?php require(__DIR__ . '/../../components/header.php'); ?>
 
     <div class="container">
         <!-- Alertas estilizados -->
