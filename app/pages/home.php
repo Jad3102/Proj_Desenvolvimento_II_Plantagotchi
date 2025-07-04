@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="img-placeholder d-inline-block">
-                        <img src="app/assets/images/home.jpg" alt="Imagem ilustrativa" class="img-fluid">
+                        <img src="app/assets/images/home.jpg" alt="Imagem ilustrativa" class="img-fluid rounded">
                     </div>
                 </div>
              </div>

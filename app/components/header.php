@@ -5,12 +5,12 @@ $fullPagePath = '/main_content/fullPage.php';
 <header class="container-fluid shadow-sm main-header">
     <nav class="navbar px-5 px-md-5 d-flex justify-content-between align-items-center">
         <!-- Logo -->
-        <a class="navbar-brand" href="../main_content/fullPage.php">
+        <a class="navbar-brand" href="https://plantagotchi.onrender.com/">
             <img src="app/assets/images/planta_logo.png" alt="Logo do Site" width="30">
         </a>
 
         <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://plantagotchi.onrender.com/">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#the_planta">Produto</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#about_us">Quem Somos</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= $fullPagePath ?>#galery">Galeria</a></li>
